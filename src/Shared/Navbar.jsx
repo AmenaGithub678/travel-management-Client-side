@@ -3,22 +3,23 @@ import { Link } from 'react-router';
 import { NavLink } from 'react-router';
 import { useNavigate } from 'react-router';
 import TourLogo from '../Logo/TourLogo';
+import useAuth from '../hooks/useAuth';
 
 const Navbar = () => {
-// const {user,logOut}= useAuth();
+ const {user,logOut}= useAuth();
     const navigate = useNavigate();
 
-//     const handleSignOut = () =>{
-//         logOut()
-//         .then( () =>{
-//     alert('LogOut Successfully')
-//      navigate("/login");
-// })
+     const handleSignOut = () =>{
+         logOut()
+         .then( () =>{
+     alert('LogOut Successfully')
+      navigate("/login");
+ })
     
-//     .catch((error)=>{
-//     console.log(error);
-//   })
-//     }
+     .catch((error)=>{
+     console.log(error);
+   })
+     }
 const navItems = <>
  <li className=' font-semibold 
        text-lg 
@@ -89,10 +90,10 @@ const navItems = <>
             </div>
             <div className="navbar-end">
       
-{/* {
+ {
 user ? <>
 <button 
-// onClick={handleSignOut}
+ onClick={handleSignOut}
 className='btn bg-info'
 >
 SignOut
@@ -109,7 +110,7 @@ SignOut
     </Link>
   </>
 
-       }            */}
+       }            
        </div>
         </div>
     );
