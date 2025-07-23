@@ -4,6 +4,7 @@ import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import { Typewriter } from 'react-simple-typewriter';
 import banner1 from '../assets/banner/banner1.jpg';
 import banner2 from '../assets/banner/banner2.jpg';
 import banner3 from '../assets/banner/banner3.jpg';
@@ -53,9 +54,19 @@ navigation
                 alt={`Banner ${index + 1}`}
                 className="w-full h-full object-cover" 
               />
-              <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-start p-10 ">
-                <h1 className="mb-4 text-4xl font-bold max-w-3xl text-white">{slide.title}</h1>
-                <p className="mb-6 max-w-2xl text-lg text-white">{slide.text}</p>
+              <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center p-10 text-center">
+                 <h1 className="mb-4 text-4xl font-bold max-w-3xl text-primary">
+                  <Typewriter
+                    words={[slide.title]}
+                    loop={true}
+                    cursor
+                    cursorStyle="|"
+                    typeSpeed={60}
+                    deleteSpeed={40}
+                    delaySpeed={2000}
+                  />
+                </h1>
+                <p className="mb-6 max-w-2xl text-lg text-info text-center">{slide.text}</p>
               </div>
             </div>
           </SwiperSlide>

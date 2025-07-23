@@ -4,15 +4,22 @@ import { NavLink } from 'react-router';
 import { useNavigate } from 'react-router';
 import TourLogo from '../Logo/TourLogo';
 import useAuth from '../hooks/useAuth';
-
+import Swal from 'sweetalert2';
 const Navbar = () => {
- const {user,logOut}= useAuth();
-    const navigate = useNavigate();
+const {user,logOut}= useAuth();
+const navigate = useNavigate();
 
-     const handleSignOut = () =>{
+const handleSignOut = () =>{
          logOut()
          .then( () =>{
-     alert('LogOut Successfully')
+    Swal.fire({
+          icon: 'success',
+          title: 'Login Successfully!!',
+          text: 'You have successfully logged Out!',
+          showConfirmButton: false,
+          timer: 2000
+        });
+
       navigate("/login");
  })
     
@@ -47,22 +54,6 @@ const navItems = <>
                isActive ? "text-secondary font-bold" : "text-primary font-semibold"
              } to='/trips'>Trips</NavLink></li>
 
-  {/* {
-    user && <>
-      <li>
-      <NavLink to="/coverage">Coverage</NavLink>
-    </li>
-    <li>
-      <NavLink to="/sendParcel">Add Parcel</NavLink>
-    </li>
-    <li>
-      <NavLink to="/about">About Us</NavLink>
-    </li>
-     <li>
-    <NavLink to="/dashboard/myParcels">My Parcels</NavLink>
-    </li>
-    </>
-  } */}
     </>
 
 
@@ -107,12 +98,12 @@ SignOut
 </> :
   <>
 <Link to="/register">
-<button className="btn bg-info">
+<button className="btn btn-outline btn-success mr-2">
   Register
 </button>
 </Link>
 <Link to="/login">
-<button className="btn bg-info">LogIn</button>
+<button className="btn btn-outline btn-success">LogIn</button>
     </Link>
   </>
 

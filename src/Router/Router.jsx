@@ -11,6 +11,7 @@ import Community from '../Pages/Community/Community';
 import About from '../Pages/About/About';
 import Trips from '../Pages/Trips/Trips';
 import PackageDetails from '../Pages/PackageDetails/PackageDetails';
+import TourGuideProfile from '../Pages/PackageDetails/TourGuideProfile/TourGuideProfile';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
         {
             path: 'package_details',
             Component: PackageDetails,
+        },
+        {
+            path: 'tour-guide/:id',
+            Component: TourGuideProfile,
         },
         {
             path: 'community',

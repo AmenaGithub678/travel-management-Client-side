@@ -2,10 +2,6 @@ import React from 'react';
 
 import LightGallery from "lightgallery/react";
 import "lightgallery/css/lightgallery.css";
-import "lightgallery/css/lg-thumbnail.css";
-import "lightgallery/css/lg-zoom.css";
-import lgThumbnail from "lightgallery/plugins/thumbnail";
-import lgZoom from "lightgallery/plugins/zoom";
 
 const images = [
   "https://i.ibb.co/TMsyVqnj/banner.jpg",
@@ -14,7 +10,7 @@ const images = [
    "https://i.ibb.co/TMsyVqnj/banner.jpg",
   "https://i.ibb.co/tpZLnQn6/banner3.jpg",
   "https://i.ibb.co/TMsyVqnj/banner.jpg",
-     "https://i.ibb.co/TMsyVqnj/banner.jpg",
+  "https://i.ibb.co/TMsyVqnj/banner.jpg",
   "https://i.ibb.co/tpZLnQn6/banner3.jpg",
 
 ];
@@ -24,7 +20,9 @@ const TourGallery = () => {
   
     <section>
       <h2 className="text-2xl font-semibold mb-4">Tour Gallery</h2>
-      <LightGallery plugins={[lgThumbnail, lgZoom]}>
+      <LightGallery 
+       selector="a.gallery-item"
+      >
         <div className="grid grid-cols-4 gap-4">
 
           {/* 🔹 Row 1: 1 big + 2 small */}

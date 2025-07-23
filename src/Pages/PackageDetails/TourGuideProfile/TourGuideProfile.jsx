@@ -1,9 +1,6 @@
 import React from 'react';
-import {  useNavigate } from 'react-router';
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/free-mode";
-import { FreeMode } from "swiper/modules";
+import { useParams } from 'react-router';
+
 const guides = [
   {
     id: 1,
@@ -72,53 +69,24 @@ const guides = [
   },
 ];
 
-const TourGuideList = () => {
-   const navigate = useNavigate();
+const TourGuideProfile = () => {
+    const { id } = useParams();
+  const guide = guides.find(g => g.id === parseInt(id));
+
+  if (!guide) return <p className="text-red-500 p-6">Guide not found.</p>;
     return (
-    <section className="py-10">
-      <h2 className="text-2xl font-semibold mb-6">Meet Our Tour Guides</h2>
-      <Swiper
-        spaceBetween={20}
-        slidesPerView={1.2}
-        breakpoints={{
-          640: { slidesPerView: 1.5 },
-          768: { slidesPerView: 2.5 },
-          1024: { slidesPerView: 3.5 },
-        }}
-        freeMode={true}
-        modules={[FreeMode]}
-      >
-        {guides.map((guide) => (
-          <SwiperSlide key={guide.id}>
-            <div
-              onClick={() => navigate(`/tour-guide/${guide.id}`)}
-              className="cursor-pointer border rounded-xl p-4 shadow hover:shadow-lg transition duration-300 bg-white"
-            >
-              <img
-                src={guide.photo}
-                alt={guide.name}
-                className="w-full h-52 object-cover rounded-xl"
-              />
-              <div className="mt-4 space-y-1">
-                <h3 className="text-xl font-semibold">{guide.name}</h3>
-                <p className="text-sm text-gray-500">{guide.city}</p>
-                <p className="text-sm"><strong>Languages:</strong> {guide.languages.join(", ")}</p>
-                <p className="text-sm">
-                  <strong>Rating:</strong> {guide.rating} ⭐ ({guide.reviews} Reviews)
-                </p>
-                <p className="text-sm">
-                  <strong>Specialties:</strong> {guide.specialties.join(", ")}
-                </p>
-                <p className="text-sm italic">"{guide.bio}"</p>
-                <p className="text-sm font-medium">Rate: {guide.price}</p>
-                <p className="text-sm text-green-600">Available: {guide.availability}</p>
-              </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </section>
+     <div className="max-w-3xl mx-auto py-10 px-4">
+      <img src={guide.photo} alt={guide.name} className="w-full h-72 lg:h-100 object-cover rounded-lg" />
+      <h1 className="text-3xl font-bold mt-4">{guide.name}</h1>
+      <p className="text-gray-500">{guide.city}</p>
+      <p className="mt-2"><strong>Languages:</strong> {guide.languages.join(', ')}</p>
+      <p><strong>Specialties:</strong> {guide.specialties.join(', ')}</p>
+      <p><strong>Rating:</strong> {guide.rating} ⭐ ({guide.reviews} reviews)</p>
+      <p><strong>Availability:</strong> {guide.availability}</p>
+      <p><strong>Price:</strong> {guide.price}</p>
+      <p className="mt-4 italic">{guide.bio}</p>
+    </div>
     );
 };
 
-export default TourGuideList;
+export default TourGuideProfile;

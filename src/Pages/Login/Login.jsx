@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router';
 import { auth } from '../../firebase/firebase.init';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import SocialLogin from '../../Shared/SocialLogin';
+import Swal from 'sweetalert2';
 const Login = () => {
 
   const { 
@@ -25,6 +26,13 @@ const {signIn}= useAuth();
          .then((result) => {
      // Signed in 
       console.log(result.user);
+      Swal.fire({
+          icon: 'success',
+          title: 'Login Successfully!!',
+          text: 'You have successfully logged in!',
+          showConfirmButton: false,
+          timer: 2000
+        });
      navigate("/");
    })
    .catch((error) => {
@@ -94,7 +102,6 @@ return (
         </fieldset>
         <SocialLogin></SocialLogin>
       </form >
-    
     </div>
   </div>
   </div>

@@ -60,7 +60,7 @@ export default function Overview() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-white text-2xl md:text-4xl font-bold mb-10"
+          className="text-primary text-2xl md:text-4xl font-bold mb-10"
         >
           {texts[currentText]}
         </motion.h2>
@@ -72,10 +72,10 @@ export default function Overview() {
     key={index}
     className="p-6 rounded-xl shadow-md hover:shadow-xl transition max-w-xs mx-auto "
   >
-    <div className="mb-3 text-blue-600 mx-auto w-fit">
+    <div className="mb-3 text-secondary mx-auto w-fit">
       {card.icon}
     </div>
-    <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
+    <h3 className="text-xl text-primary font-semibold mb-2">{card.title}</h3>
     <p className="text-gray-700">{card.description}</p>
   </div>
 ))}

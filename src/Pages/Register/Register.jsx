@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../hooks/useAuth';
 import SocialLogin from '../../Shared/SocialLogin';
+import Swal from 'sweetalert2';
 const Register = () => {
 
  const {register,handleSubmit,
@@ -47,7 +48,15 @@ const [timeLeft, setTimeLeft] = useState({
      console.log(createUser);
       createUser(data.email,data.password)
        .then(result => {
-                 console.log(result.user)
+      console.log(result.user)
+
+  Swal.fire({
+          icon: 'success',
+          title: 'Registration Successful',
+          text: 'Your account has been created successfully!',
+          showConfirmButton: false,
+          timer: 2000
+        });
              })
             .catch(error => {
                  console.error(error);

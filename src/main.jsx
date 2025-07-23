@@ -7,12 +7,10 @@ import router from './Router/Router.jsx'
 import AuthProvider from './hooks/AuthProvider/AuthProvider.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <AuthProvider>
+<StrictMode>
+<AuthProvider>
 <RouterProvider router={router}>
-
-   </RouterProvider>
-    </AuthProvider>
-   
-  </StrictMode>,
+</RouterProvider>
+</AuthProvider>
+</StrictMode>,
 )
