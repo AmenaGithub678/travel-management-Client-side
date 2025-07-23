@@ -27,6 +27,12 @@ const navItems = <>
      <NavLink className={({       isActive }) =>
                isActive ? "text-secondary font-bold" : "text-primary font-semibold"
             } to='/'>Home</NavLink></li>
+ <li className=' font-semibold 
+       text-lg 
+       text-primary'>
+     <NavLink className={({       isActive }) =>
+               isActive ? "text-secondary font-bold" : "text-primary font-semibold"
+            } to='/package_details'>Packages</NavLink></li>           
        <li className=' font-semibold text-lg text-primary'>
            <NavLink className={({ isActive }) =>
                isActive ? "text-secondary font-bold" : "text-primary font-semibold"

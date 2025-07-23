@@ -4,6 +4,7 @@ import Lottie from 'lottie-react';
 import { Link } from 'react-router';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../hooks/useAuth';
+import SocialLogin from '../../Shared/SocialLogin';
 const Register = () => {
 
  const {register,handleSubmit,
@@ -122,16 +123,16 @@ const [timeLeft, setTimeLeft] = useState({
 )}
               <button type="submit" className="btn btn-neutral mt-4">Register</button>
 
-              <p className="text-center pt-3 font-semibold">
+              <p className="text-center pt-2 font-semibold">
                 Already have an account?{' '}
                 <Link to="/login" className="text-blue-500 underline">Login</Link>
               </p>
             </fieldset>
           </form>
 
-          <div className="px-6 pb-6">
-            <div className="divider">OR</div>
-            {/* SocialIcon component if needed */}
+          <div className="px-4 pb-6">
+         
+           <SocialLogin></SocialLogin>
           </div>
         </div>
 

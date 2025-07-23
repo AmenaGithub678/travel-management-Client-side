@@ -6,6 +6,7 @@ import useAuth from '../../hooks/useAuth';
 import { useNavigate } from 'react-router';
 import { auth } from '../../firebase/firebase.init';
 import { sendPasswordResetEmail } from 'firebase/auth';
+import SocialLogin from '../../Shared/SocialLogin';
 const Login = () => {
 
   const { 
@@ -89,10 +90,11 @@ return (
 
           <div><button onClick={handleResetPassward}
            className="link link-hover">Forgot password?</button></div>
-          <button className="btn btn-neutral mt-4">Login</button>
+          <button className="btn btn-neutral mt-2">Login</button>
         </fieldset>
+        <SocialLogin></SocialLogin>
       </form >
-     {/* <SocialIcon></SocialIcon> */}
+    
     </div>
   </div>
   </div>

@@ -10,6 +10,7 @@ import AuthLayout from '../layouts/AuthLayout';
 import Community from '../Pages/Community/Community';
 import About from '../Pages/About/About';
 import Trips from '../Pages/Trips/Trips';
+import PackageDetails from '../Pages/PackageDetails/PackageDetails';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
         {
             index: true,
             Component: Home,
+        },
+        {
+            path: 'package_details',
+            Component: PackageDetails,
         },
         {
             path: 'community',
