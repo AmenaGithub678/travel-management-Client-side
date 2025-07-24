@@ -32,7 +32,7 @@ const Home = () => {
     <GuidesTab />
     </TabPanel>
    </Tabs>
-            </div>
+</div>
 
 <PlacesSection></PlacesSection>
 <Faq></Faq>

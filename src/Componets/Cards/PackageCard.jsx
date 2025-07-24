@@ -14,7 +14,7 @@ const PackageCard = ({ pack }) => {
     <p className="font-semibold">Price: ৳{price}</p>
     <div className="card-actions justify-end">
     <Link
-    //  to={`/packages/${_id}`}
+      to={`/package-details/${_id}`}
      >
     <button className="btn btn-sm btn-primary">View Details</button>
     </Link>

@@ -1,31 +1,30 @@
-import React, { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+import PackageCard from '../Cards/PackageCard';
 
 const PackagesTab = () => {
-     const [packages, setPackages] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        fetch('http://localhost:5000/api/packages/random') // 🔁 Use your backend URL
-            .then(res => res.json())
-            .then(data => {
-                setPackages(data);
-                setLoading(false);
-            })
-            .catch(err => {
-                console.error('Error fetching packages:', err);
-                setLoading(false);
-            });
-    }, []);
-
-    if (loading) {
-        return <div className="text-center my-10">Loading...</div>;
+    const axiosSecure = useAxiosSecure();
+    const { data: packages = [], isLoading, isError } = useQuery({
+    queryKey: ['randomPackages'],
+    queryFn: async () => {
+      const res = await axiosSecure.get('/packages/random');
+      return res.data;
     }
+  });
+
+  if (isLoading) {
+    return <div className="text-center my-10">Loading...</div>;
+  }
+
+  if (isError) {
+    return <div className="text-center text-red-500">Failed to load packages.</div>;
+  }
     return (
        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {packages.map(pack => (
-                <PackageCard key={pack._id} pack={pack} />
-            ))}
-        </div>
+      {packages.map(pack => (
+        <PackageCard key={pack._id} pack={pack} />
+      ))}
+    </div>
     );
 };
 

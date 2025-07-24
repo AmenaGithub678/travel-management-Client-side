@@ -10,8 +10,9 @@ import AuthLayout from '../layouts/AuthLayout';
 import Community from '../Pages/Community/Community';
 import About from '../Pages/About/About';
 import Trips from '../Pages/Trips/Trips';
-import PackageDetails from '../Pages/PackageDetails/PackageDetails';
 import TourGuideProfile from '../Pages/PackageDetails/TourGuideProfile/TourGuideProfile';
+import PackageDetails from '../Pages/PackageDetails/PackageDetails';
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
             Component: Home,
         },
         {
-            path: 'package_details',
+            path: 'package-details/:id',
             Component: PackageDetails,
         },
         {

@@ -4,17 +4,17 @@ import { Typewriter } from "react-simple-typewriter";
 const About = () => {
 const projects = [
   {
-    title: "Tourism Management System",
+    title: "AssignMates",
     image: "https://i.ibb.co/Qj6FQCM9/assignmate.png",
     link: "https://my-online-assignment-project.web.app/",
   },
   {
-    title: "Coffee House",
+    title: "FreeLanceFusion",
     image: "https://i.ibb.co/fGkmKB0z/freelance.png",
     link: "https://freelance-application-5ac09.web.app/",
   },
   {
-    title: "Luxe Stay Hotel",
+    title: "Axit Project",
     image: "https://i.ibb.co/nqx4NBzq/AXiT.png",
     link: "https://amenagithub678.github.io/BooStrap-Landing-PorJct1/",
   },
@@ -40,7 +40,7 @@ const projects = [
           </p>
 
           <p className="text-gray-300 mb-6 max-w-lg">
-            I specialize in building dynamic and responsive full-stack web
+            I specialize in building dynamic and responsive Mern-stack web
             applications using MongoDB, Express, React, and Node.js. I'm
             passionate about clean code, intuitive UI/UX, and continuous
             learning.
