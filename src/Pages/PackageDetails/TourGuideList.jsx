@@ -4,78 +4,30 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import { FreeMode } from "swiper/modules";
-const guides = [
-  {
-    id: 1,
-    name: "Zafor Ahmed",
-    city: "Cox's Bazar",
-    photo: "https://i.ibb.co/GvQpDZDk/tour-guide-6816049-1280.jpg",
-    languages: ["Bangla", "English", "Hindi"],
-    rating: 4.9,
-    reviews: 32,
-    specialties: ["Sea Beach Tours", "Cultural Heritage"],
-    bio: "Zafor has been guiding tourists in Cox's Bazar for 8+ years. Known for his deep local knowledge and friendly approach.",
-    price: "৳1500/day",
-    availability: "Everyday"
-  },
-  {
-    id: 2,
-    name: "Shamima Nasrin",
-    city: "Sundarbans",
-    photo: "https://i.ibb.co/GvQpDZDk/tour-guide-6816049-1280.jpg",
-    languages: ["Bangla", "English"],
-    rating: 4.8,
-    reviews: 27,
-    specialties: ["Wildlife Tours", "Boat Safari"],
-    bio: "Shamima is passionate about wildlife and has led over 100 Sundarbans tours.",
-    price: "৳2000/day",
-    availability: "Weekends Only"
-  },
-  {
-    id: 3,
-    name: "Hasan Ali",
-    city: "Sylhet",
-    photo: "https://i.ibb.co/GvQpDZDk/tour-guide-6816049-1280.jpg",
-    languages: ["Bangla", "English"],
-    rating: 4.7,
-    reviews: 21,
-    specialties: ["Tea Garden Tours", "Adventure Trekking"],
-    bio: "Hasan is a local from Sylhet who loves showing off the scenic tea estates and hills.",
-    price: "৳1800/day",
-    availability: "Mon - Fri"
-  },
-  {
-    id: 4,
-    name: "Rehana Khatun",
-    city: "Dhaka",
-    photo: "https://i.ibb.co/GvQpDZDk/tour-guide-6816049-1280.jpg",
-    languages: ["Bangla", "English", "Hindi"],
-    rating: 4.9,
-    reviews: 34,
-    specialties: ["Old Dhaka Walk", "Food Tours"],
-    bio: "Rehana gives an unforgettable taste of Old Dhaka’s food and history.",
-    price: "৳1000/day",
-    availability: "Mon - Sat"
-  },
-  {
-    id: 5,
-    name: "Mamun Hossain",
-    city: "Bandarban",
-    photo: "https://i.ibb.co/GvQpDZDk/tour-guide-6816049-1280.jpg",
-    languages: ["Bangla", "Chakma", "English"],
-    rating: 4.6,
-    reviews: 18,
-    specialties: ["Hill Tracking", "Tribal Culture"],
-    bio: "Born and raised in the hills of Bandarban, Mamun connects you to nature and indigenous culture.",
-    price: "৳2200/day",
-    availability: "Flexible"
-  },
-];
+import { useQuery } from '@tanstack/react-query';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+
 
 const TourGuideList = () => {
-   const navigate = useNavigate();
+  
+    const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure();
+
+  const { data: guides = [], isLoading } = useQuery({
+    queryKey: ['tourGuides'],
+    queryFn: async () => {
+      const res = await axiosSecure.get('/tour-guides');
+      return res.data;
+    },
+  });
+
+  if (isLoading) {
+    return <p className="text-center py-10">Loading...</p>;
+  }
+
+
     return (
-    <section className="py-10">
+        <section className="py-10">
       <h2 className="text-2xl font-semibold mb-6">Meet Our Tour Guides</h2>
       <Swiper
         spaceBetween={20}
@@ -89,9 +41,9 @@ const TourGuideList = () => {
         modules={[FreeMode]}
       >
         {guides.map((guide) => (
-          <SwiperSlide key={guide.id}>
+          <SwiperSlide key={guide._id}>
             <div
-              onClick={() => navigate(`/tour-guide/${guide.id}`)}
+              onClick={() => navigate(`/tour-guide/${guide._id}`)}
               className="cursor-pointer border rounded-xl p-4 shadow hover:shadow-lg transition duration-300 bg-white"
             >
               <img
@@ -102,13 +54,13 @@ const TourGuideList = () => {
               <div className="mt-4 space-y-1">
                 <h3 className="text-xl font-semibold">{guide.name}</h3>
                 <p className="text-sm text-gray-500">{guide.city}</p>
-                <p className="text-sm"><strong>Languages:</strong> {guide.languages.join(", ")}</p>
+                <p className="text-sm">
+                  <strong>Languages:</strong> {guide.languages?.join(', ')}
+                </p>
                 <p className="text-sm">
                   <strong>Rating:</strong> {guide.rating} ⭐ ({guide.reviews} Reviews)
                 </p>
-                <p className="text-sm">
-                  <strong>Specialties:</strong> {guide.specialties.join(", ")}
-                </p>
+                
                 <p className="text-sm italic">"{guide.bio}"</p>
                 <p className="text-sm font-medium">Rate: {guide.price}</p>
                 <p className="text-sm text-green-600">Available: {guide.availability}</p>

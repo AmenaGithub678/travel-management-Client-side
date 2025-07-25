@@ -12,6 +12,13 @@ import About from '../Pages/About/About';
 import Trips from '../Pages/Trips/Trips';
 import TourGuideProfile from '../Pages/PackageDetails/TourGuideProfile/TourGuideProfile';
 import PackageDetails from '../Pages/PackageDetails/PackageDetails';
+import TourGuideList from '../Pages/PackageDetails/TourGuideList';
+import PrivateRoute from '../Routes/PrivateRoute';
+import DashBoardLayout from '../layouts/DashBoardLayout';
+import MyBookings from '../Pages/Dashboard/Tourist/MyBookings';
+import ManageStories from '../Pages/Dashboard/Tourist/ManageStories';
+import JoinGuide from '../Pages/Dashboard/Tourist/JoinGuide';
+import AddStories from '../Pages/Dashboard/Tourist/AddStories';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +32,10 @@ const router = createBrowserRouter([
         {
             path: 'package-details/:id',
             Component: PackageDetails,
+        },
+        {
+        path: '/guide/:id',
+        Component: TourGuideList,
         },
         {
             path: 'tour-guide/:id',
@@ -60,6 +71,40 @@ const router = createBrowserRouter([
        }
     ]
   },
+  {
+    path: '/dashboard',
+    element: <PrivateRoute>
+      <DashBoardLayout></DashBoardLayout>
+    </PrivateRoute>,
+    children: [
+      // Tourist
+      { 
+        path: 'my-bookings', 
+        element: <MyBookings></MyBookings> 
+      },
+      { 
+        path: 'manage-stories', 
+        element: <ManageStories></ManageStories>
+      },
+      { 
+        path: 'join-guide', 
+        element: <JoinGuide></JoinGuide> ,
+      },
+      {
+        path: 'add-stories', 
+        element:  <AddStories></AddStories>
+      },
+
+       // Guide
+      // { path: 'my-assigned-tours', element: <GuideRoute><MyAssignedTours /></GuideRoute> },
+      // { path: 'add-stories', element: <GuideRoute><AddStories /></GuideRoute> },
+      // { path: 'manage-stories', element: <GuideRoute><ManageStories /></GuideRoute> },
+
+
+    ]
+  }
+
+
 ]);
 
 export default router;

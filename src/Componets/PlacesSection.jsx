@@ -44,7 +44,7 @@ const places = [
 
     return (
  <div className="py-16 px-4 bg-gray-50">
-      <h2 className="text-3xl font-bold text-center mb-10">Explore Amazing Places</h2>
+      <h2 className="text-3xl text-primary font-bold text-center mb-10">Explore Amazing Places</h2>
 
      <Swiper
   effect={'coverflow'}
@@ -67,7 +67,7 @@ const places = [
     <SwiperSlide
       key={index}
       style={{
-        width: '400px', // fixed width for all slides
+        width: '400px', 
       }}
       className="bg-white rounded-lg overflow-hidden shadow-md relative px-5"
     >

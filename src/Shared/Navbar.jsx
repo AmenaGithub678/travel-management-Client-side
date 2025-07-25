@@ -53,58 +53,105 @@ const navItems = <>
 
 
     return (
-<div 
-    className="navbar bg-base-100 shadow-sm">
-<div 
-    className="navbar-start">
-            <div 
-            className="dropdown">
-                <div 
-                tabIndex={0} 
-                role="button" 
-                className="btn btn-ghost lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
-                    </div>
-                    <ul
-                        tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                        {navItems}
-                    </ul>
-                </div>
-  <div className="btn btn-ghost text-xl">
- <TourLogo></TourLogo>
-                </div>
-            </div>
-            <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
-                    {navItems}
-                </ul>
-            </div>
-            <div className="navbar-end">
-      
- {
-user ? <>
-<button 
- onClick={handleSignOut}
-className='btn bg-info'
->
-SignOut
-</button>
-</> :
-  <>
-<Link to="/register">
-<button className="btn btn-outline btn-success mr-2">
-  Register
-</button>
-</Link>
-<Link to="/login">
-<button className="btn btn-outline btn-success">LogIn</button>
-    </Link>
-  </>
+ <div className="navbar bg-base-100 shadow-sm">
+      <div className="navbar-start">
+        <div className="dropdown">
+          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
+            </svg>
+          </div>
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
+          >
+            {navItems}
 
-       }            
-       </div>
+            {/* ✅ Login/Register inside dropdown on mobile only */}
+            {!user && (
+              <>
+                <li >
+                  <Link to="/register" className="btn btn-outline btn-success mb-2 w-20">
+                    Register
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/login" className="btn btn-outline btn-success mb-2 w-20">
+                    Login
+                  </Link>
+                </li>
+              </>
+            )}
+          </ul>
         </div>
+        <div className="btn btn-ghost text-xl">
+          <TourLogo />
+        </div>
+      </div>
+
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">{navItems}</ul>
+      </div>
+
+      <div className="navbar-end">
+        {/* ✅ Show profile pic + dropdown if logged in */}
+        {user ? (
+          <div className="dropdown dropdown-end">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
+            >
+              <div className="w-10 rounded-full ring ring-info ring-offset-base-100 ring-offset-2">
+                <img
+                  src={user.photoURL || "https://i.ibb.co/L6Z9KHY/avatar.png"}
+                  alt="Profile"
+                />
+              </div>
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-4 shadow bg-base-100 rounded-box w-60"
+            >
+              <li className="text-sm font-semibold text-gray-600">
+                {user.displayName}
+              </li>
+              <li className="text-xs text-gray-500 mb-2">{user.email}</li>
+              <li>
+                <Link to="/dashboard">Dashboard</Link>
+              </li>
+              <li>
+                <Link to="/offers">Offer Announcements</Link>
+              </li>
+              <li>
+                <button
+                  onClick={handleSignOut}
+                  className="btn btn-sm bg-error text-white mt-2"
+                >
+                  Logout
+                </button>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          // ✅ Desktop login/register buttons
+          <div className="hidden lg:flex gap-2">
+            <Link to="/register">
+              <button className="btn btn-outline btn-success">Register</button>
+            </Link>
+            <Link to="/login">
+              <button className="btn btn-outline btn-success">LogIn</button>
+            </Link>
+          </div>
+        )}
+      </div>
+    </div>
     );
 };
 

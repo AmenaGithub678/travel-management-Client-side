@@ -1,11 +1,11 @@
 
 import TourGallery from './TourGallery';
 import AboutTour from './AboutTour';
-import TourPlan from './TourPlan';
 import TourGuideList from './TourGuideList';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import { useParams } from 'react-router';
 import { useQuery } from '@tanstack/react-query';
+import TourPlan from './TourPlan';
 
 const PackageDetails = () => {
     const { id } = useParams();
@@ -25,8 +25,8 @@ const PackageDetails = () => {
         <div>
            <TourGallery images={pack.gallery}></TourGallery> 
            <AboutTour description={pack.description}></AboutTour>
-           <TourPlan tourPlan={pack.tourPlan}></TourPlan>
-           <TourGuideList></TourGuideList>
+       <TourPlan tourPlan={pack.tourPlan}></TourPlan>
+       <TourGuideList ></TourGuideList>
         </div>
     );
 };

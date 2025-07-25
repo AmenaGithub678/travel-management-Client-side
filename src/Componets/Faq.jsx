@@ -4,7 +4,7 @@ const Faq = () => {
     return (
     <div className="max-w-7xl mx-auto px-4 py-12">
       <div className="text-center mb-10">
-        <h1 className="font-bold text-4xl text-[#AD56C4]">
+        <h1 className="font-bold text-4xl text-primary">
           Frequently Asked Questions
         </h1>
       </div>
@@ -62,7 +62,7 @@ const Faq = () => {
               <div className="collapse-title font-semibold text-xl text-[#f000b8]">
                 {faq.question}
               </div>
-              <div className="collapse-content text-lg font-normal tracking-wide">
+              <div className="collapse-content text-lg font-normal text-info tracking-wide">
                 {faq.answer}
               </div>
             </div>
