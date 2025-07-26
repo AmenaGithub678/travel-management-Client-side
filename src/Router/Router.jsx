@@ -19,6 +19,7 @@ import MyBookings from '../Pages/Dashboard/Tourist/MyBookings';
 import ManageStories from '../Pages/Dashboard/Tourist/ManageStories';
 import JoinGuide from '../Pages/Dashboard/Tourist/JoinGuide';
 import AddStories from '../Pages/Dashboard/Tourist/AddStories';
+import UpdateStory from '../Pages/Dashboard/Tourist/UpdateStory';
 
 const router = createBrowserRouter([
   {
@@ -93,6 +94,10 @@ const router = createBrowserRouter([
       {
         path: 'add-stories', 
         element:  <AddStories></AddStories>
+      },
+      {
+        path: 'update-story/:id', 
+        element:  <UpdateStory></UpdateStory>
       },
 
        // Guide
