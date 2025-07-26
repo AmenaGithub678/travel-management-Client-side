@@ -20,6 +20,7 @@ import ManageStories from '../Pages/Dashboard/Tourist/ManageStories';
 import JoinGuide from '../Pages/Dashboard/Tourist/JoinGuide';
 import AddStories from '../Pages/Dashboard/Tourist/AddStories';
 import UpdateStory from '../Pages/Dashboard/Tourist/UpdateStory';
+import Profile from '../Pages/Dashboard/Tourist/Profile';
 
 const router = createBrowserRouter([
   {
@@ -99,6 +100,10 @@ const router = createBrowserRouter([
         path: 'update-story/:id', 
         element:  <UpdateStory></UpdateStory>
       },
+      {
+        path: 'tourist-profile',
+       element: <Profile></Profile>
+      }
 
        // Guide
       // { path: 'my-assigned-tours', element: <GuideRoute><MyAssignedTours /></GuideRoute> },
