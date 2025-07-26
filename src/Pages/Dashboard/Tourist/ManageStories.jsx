@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 
 const ManageStories = () => {
 const axiosSecure = useAxiosSecure();
-  const [stories, setStories] = useState([]);
+const [stories, setStories] = useState([]);
 
   useEffect(() => {
     axiosSecure.get('/stories') // Assuming this gets all stories
