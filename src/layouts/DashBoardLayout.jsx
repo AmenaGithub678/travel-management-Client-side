@@ -57,6 +57,10 @@ const DashBoardLayout = () => {
             <li>
                 <NavLink to="/dashboard/tourist-profile">Manage Profile</NavLink>
             </li>
+            {/* ADMIN */}
+            <li>
+                <NavLink to="/dashboard/add-packages">Add-packages</NavLink>
+            </li>
         </ul>
     </div>
     </div>

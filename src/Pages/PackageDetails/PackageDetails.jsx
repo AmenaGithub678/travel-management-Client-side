@@ -6,6 +6,8 @@ import useAxiosSecure from '../../hooks/useAxiosSecure';
 import { useParams } from 'react-router';
 import { useQuery } from '@tanstack/react-query';
 import TourPlan from './TourPlan';
+import BookinForm from './BookinForm';
+
 
 const PackageDetails = () => {
     const { id } = useParams();
@@ -27,6 +29,7 @@ const PackageDetails = () => {
            <AboutTour description={pack.description}></AboutTour>
        <TourPlan tourPlan={pack.tourPlan}></TourPlan>
        <TourGuideList ></TourGuideList>
+       <BookinForm></BookinForm>
         </div>
     );
 };
