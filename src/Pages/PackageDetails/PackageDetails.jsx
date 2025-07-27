@@ -29,7 +29,7 @@ const PackageDetails = () => {
            <AboutTour description={pack.description}></AboutTour>
        <TourPlan tourPlan={pack.tourPlan}></TourPlan>
        <TourGuideList ></TourGuideList>
-       <BookinForm></BookinForm>
+       <BookinForm selectedPackage={pack}></BookinForm>
         </div>
     );
 };
