@@ -24,6 +24,9 @@ import Profile from '../Pages/Dashboard/Tourist/Profile';
 import AddPackage from '../Pages/Dashboard/Admin/AddPackage';
 import Payment from '../Pages/Dashboard/Payment/Payment';
 import PaymentHistory from '../Pages/Dashboard/Payment/PaymentHistory';
+import MyAssignedTours from '../Pages/Dashboard/Guide/MyAssignedTours';
+import ManageProfile from '../Pages/Dashboard/Admin/ManageProfile';
+import ManageCandidates from '../Pages/Dashboard/Admin/ManageCandidates';
 
 const router = createBrowserRouter([
   {
@@ -42,10 +45,10 @@ const router = createBrowserRouter([
         path: '/guide/:id',
         Component: TourGuideList,
         },
-        {
-            path: 'tour-guide/:id',
-            Component: TourGuideProfile,
-        },
+        // {
+        //     path: 'tour-guide/:id',
+        //     Component: TourGuideProfile,
+        // },
         {
             path: 'community',
             Component: Community,
@@ -116,16 +119,28 @@ const router = createBrowserRouter([
        element: <Profile></Profile>
       },
 
-//  Guide
-// { path: 'my-assigned-tours', element: <GuideRoute><MyAssignedTours /></GuideRoute> },
-// { path: 'add-stories', element: <GuideRoute><AddStories /></GuideRoute> },
-// { path: 'manage-stories', element: <GuideRoute><ManageStories /></GuideRoute> },
+// GUIDE
+ { path: 'assigned-tours',
+   element: <MyAssignedTours></MyAssignedTours>
+  },
+//  { path: 'add-stories', element: <GuideRoute><AddStories /></GuideRoute> },
+//  { path: 'manage-stories', element: <GuideRoute><ManageStories /></GuideRoute> },
 
 // ADMIN
 {
+path: 'admin-profile',
+element:<ManageProfile></ManageProfile>
+},
+{
+  path: 'ManageCandidates',
+  element: <ManageCandidates></ManageCandidates>
+},
+{
   path: 'add-packages',
   element: <AddPackage></AddPackage>
-}
+},
+
+
     ]
   }
 

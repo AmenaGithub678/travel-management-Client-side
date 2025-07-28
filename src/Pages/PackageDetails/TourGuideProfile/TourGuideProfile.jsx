@@ -1,92 +1,85 @@
-import React from 'react';
-import { useParams } from 'react-router';
 
-const guides = [
-  {
-    id: 1,
-    name: "Zafor Ahmed",
-    city: "Cox's Bazar",
-    photo: "https://i.ibb.co/GvQpDZDk/tour-guide-6816049-1280.jpg",
-    languages: ["Bangla", "English", "Hindi"],
-    rating: 4.9,
-    reviews: 32,
-    specialties: ["Sea Beach Tours", "Cultural Heritage"],
-    bio: "Zafor has been guiding tourists in Cox's Bazar for 8+ years. Known for his deep local knowledge and friendly approach.",
-    price: "৳1500/day",
-    availability: "Everyday"
-  },
-  {
-    id: 2,
-    name: "Shamima Nasrin",
-    city: "Sundarbans",
-    photo: "https://i.ibb.co/GvQpDZDk/tour-guide-6816049-1280.jpg",
-    languages: ["Bangla", "English"],
-    rating: 4.8,
-    reviews: 27,
-    specialties: ["Wildlife Tours", "Boat Safari"],
-    bio: "Shamima is passionate about wildlife and has led over 100 Sundarbans tours.",
-    price: "৳2000/day",
-    availability: "Weekends Only"
-  },
-  {
-    id: 3,
-    name: "Hasan Ali",
-    city: "Sylhet",
-    photo: "https://i.ibb.co/GvQpDZDk/tour-guide-6816049-1280.jpg",
-    languages: ["Bangla", "English"],
-    rating: 4.7,
-    reviews: 21,
-    specialties: ["Tea Garden Tours", "Adventure Trekking"],
-    bio: "Hasan is a local from Sylhet who loves showing off the scenic tea estates and hills.",
-    price: "৳1800/day",
-    availability: "Mon - Fri"
-  },
-  {
-    id: 4,
-    name: "Rehana Khatun",
-    city: "Dhaka",
-    photo: "https://i.ibb.co/GvQpDZDk/tour-guide-6816049-1280.jpg",
-    languages: ["Bangla", "English", "Hindi"],
-    rating: 4.9,
-    reviews: 34,
-    specialties: ["Old Dhaka Walk", "Food Tours"],
-    bio: "Rehana gives an unforgettable taste of Old Dhaka’s food and history.",
-    price: "৳1000/day",
-    availability: "Mon - Sat"
-  },
-  {
-    id: 5,
-    name: "Mamun Hossain",
-    city: "Bandarban",
-    photo: "https://i.ibb.co/GvQpDZDk/tour-guide-6816049-1280.jpg",
-    languages: ["Bangla", "Chakma", "English"],
-    rating: 4.6,
-    reviews: 18,
-    specialties: ["Hill Tracking", "Tribal Culture"],
-    bio: "Born and raised in the hills of Bandarban, Mamun connects you to nature and indigenous culture.",
-    price: "৳2200/day",
-    availability: "Flexible"
-  },
-];
+
+import { useQuery } from '@tanstack/react-query';
+import { useParams } from 'react-router';
+import { axiosSecure } from '../../../hooks/useAxiosSecure';
 
 const TourGuideProfile = () => {
-    const { id } = useParams();
-  const guide = guides.find(g => g.id === parseInt(id));
+  const { id } = useParams();
+  
 
-  if (!guide) return <p className="text-red-500 p-6">Guide not found.</p>;
-    return (
-     <div className="max-w-3xl mx-auto py-10 px-4">
-      <img src={guide.photo} alt={guide.name} className="w-full h-72 lg:h-100 object-cover rounded-lg" />
-      <h1 className="text-3xl font-bold mt-4">{guide.name}</h1>
-      <p className="text-gray-500">{guide.city}</p>
-      <p className="mt-2"><strong>Languages:</strong> {guide.languages.join(', ')}</p>
-      <p><strong>Specialties:</strong> {guide.specialties.join(', ')}</p>
-      <p><strong>Rating:</strong> {guide.rating} ⭐ ({guide.reviews} reviews)</p>
-      <p><strong>Availability:</strong> {guide.availability}</p>
-      <p><strong>Price:</strong> {guide.price}</p>
-      <p className="mt-4 italic">{guide.bio}</p>
-    </div>
-    );
+  // Fetch guide details
+  const { data: guide = {}, isLoading: guideLoading } = useQuery({
+    queryKey: ['guide', id],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/tour-guides/${id}`);
+      return res.data;
+    },
+  });
+
+  // Fetch stories by guide's email (only when email is available)
+  const { data: stories = [], isLoading: storiesLoading } = useQuery({
+    queryKey: ['stories-by-guide', guide?.email],
+    enabled: !!guide?.email,
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/stories?email=${guide.email}`);
+      return res.data;
+    },
+  });
+
+  if (guideLoading) return <p className="text-center py-10">Loading guide info...</p>;
+
+  return (
+    <section className="max-w-5xl mx-auto px-4 py-10">
+      {/* Guide Info */}
+      <div className="grid md:grid-cols-2 gap-8 mb-10 bg-white shadow rounded-xl p-6">
+        <div>
+          <img
+            src={guide.photo}
+            alt={guide.name}
+            className="w-full h-72 object-cover rounded-xl"
+          />
+        </div>
+        <div className="space-y-3">
+          <h2 className="text-3xl font-bold">{guide.name}</h2>
+          <p className="text-gray-600">📍 City: {guide.city}</p>
+          <p className="text-gray-600">📧 Email: {guide.email}</p>
+          <p><strong>Languages:</strong> {guide.languages?.join(', ')}</p>
+          <p><strong>Specialty:</strong> {guide.specialty}</p>
+          <p><strong>Experience:</strong> {guide.experience} years</p>
+          <p><strong>Price Range:</strong> {guide.priceRange}</p>
+          <p><strong>Rating:</strong> {guide.rating} ⭐ ({guide.reviews} reviews)</p>
+          <p className="italic">"{guide.bio}"</p>
+        </div>
+      </div>
+
+      {/* Stories Section */}
+      <div>
+        <h3 className="text-2xl font-semibold mb-4">📝 Stories by {guide.name}</h3>
+        {storiesLoading ? (
+          <p>Loading stories...</p>
+        ) : stories.length > 0 ? (
+          <div className="grid md:grid-cols-2 gap-6">
+            {stories.map(story => (
+              <div key={story._id} className="border p-4 rounded-xl shadow bg-white">
+                <h4 className="text-xl font-semibold mb-2">{story.title}</h4>
+                <p className="text-gray-700 mb-2">{story.description}</p>
+                {story.images?.length > 0 && (
+                  <img
+                    src={story.images[0]}
+                    alt="Story"
+                    className="w-full h-40 object-cover rounded"
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p className="text-gray-500">No stories published yet by this guide.</p>
+        )}
+      </div>
+    </section>
+  );
 };
 
 export default TourGuideProfile;

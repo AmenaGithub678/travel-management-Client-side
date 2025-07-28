@@ -6,8 +6,6 @@ import useAuth from '../../hooks/useAuth';
 import { useForm } from 'react-hook-form';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { Link } from 'react-router';
-
 const BookinForm = ({ selectedPackage }) => {
    const { register, handleSubmit, setValue, watch } = useForm();
   const { user } = useAuth();

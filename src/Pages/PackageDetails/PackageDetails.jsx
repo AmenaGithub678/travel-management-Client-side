@@ -25,8 +25,8 @@ const PackageDetails = () => {
   if (isError) return <div className="text-center text-red-500">Failed to load package.</div>;
     return (
         <div>
-           <TourGallery images={pack.gallery}></TourGallery> 
-           <AboutTour description={pack.description}></AboutTour>
+        <TourGallery images={pack.gallery}></TourGallery> 
+        <AboutTour description={pack.description}></AboutTour>
        <TourPlan tourPlan={pack.tourPlan}></TourPlan>
        <TourGuideList ></TourGuideList>
        <BookinForm selectedPackage={pack}></BookinForm>

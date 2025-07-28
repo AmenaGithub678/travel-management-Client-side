@@ -1,14 +1,30 @@
 import React from 'react';
 import useAuth from '../hooks/useAuth';
 import { useNavigate } from 'react-router';
+import { axiosSecure } from '../hooks/useAxiosSecure';
 
 const SocialLogin = () => {
     const { signInWithGoogle } = useAuth();
 const navigate = useNavigate();
     const handleGoogleSignIn = () => {
         signInWithGoogle()
-            .then(result => {
+            .then(async (result)  => {
                 console.log(result.user)
+
+
+                const user = result.user;
+                console.log(result.user);
+                // update userinfo in the database
+                const userInfo = {
+                    email: user.email,
+                    role: 'user', // default role
+                    created_at: new Date().toISOString(),
+                    last_log_in: new Date().toISOString()
+                }
+
+                const res = await axiosSecure.post('/users', userInfo);
+                console.log('user update info', res.data)
+
                 navigate("/");
             })
             .catch(error => {

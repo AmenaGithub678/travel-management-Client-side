@@ -13,8 +13,8 @@ const GuideCard = ({ guide }) => {
                 <p className="text-sm">Specialty: {specialty}</p>
                 <p className="text-sm">Experience: {experience} years</p>
                 <div className="card-actions justify-end">
-                    <Link 
-                      to={`/guide/${_id}`}
+                    <Link
+                      to={`/tour-guide/${_id}`}
                      >
                         <button className="btn btn-sm btn-primary">Details</button>
                     </Link>

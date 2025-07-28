@@ -1,19 +1,30 @@
 import React, { useState } from 'react';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useForm } from 'react-hook-form';
+import useAuth from '../../../hooks/useAuth';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+
 
 const JoinGuide = () => {
-
-const { register, handleSubmit, reset } = useForm();
+  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
+ const { register, handleSubmit, reset } = useForm();
   const [isModalOpen, setModalOpen] = useState(false);
   const [isSubmitting, setSubmitting] = useState(false);
-  const axiosSecure = useAxiosSecure();
 
   const onSubmit = async (data) => {
+    if (!user) return;
+
+    const application = {
+      ...data,
+      name: user.displayName,
+      email: user.email,
+      photo: user.photoURL,
+    };
+
     setSubmitting(true);
     try {
-      const res = await axiosSecure.post('/apply-guide', data);
-      if (res.data?.insertedId || res.data?.success) {
+      const res = await axiosSecure.post('/apply-guide', application); 
+      if (res.data?.insertedId || res.data?.acknowledged) {
         setModalOpen(true);
         reset();
       }
@@ -74,7 +85,6 @@ const { register, handleSubmit, reset } = useForm();
         </form>
       </div>
 
-      {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50">
           <div className="bg-white p-8 rounded-lg shadow-lg text-center max-w-sm w-full">

@@ -2,22 +2,21 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import Swal from 'sweetalert2';
 import useAuth from '../../../hooks/useAuth';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { Link } from 'react-router';
+import { axiosSecure } from '../../../hooks/useAxiosSecure';
 
 const MyBookings = () => {
-    const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
 
   const { 
     data: bookings = [], isLoading 
   } = useQuery({
     queryKey: ['myBookings', user?.email],
-    queryFn: async () => {
-      const res = await axiosSecure.get(`/bookings?touristEmail=${user?.email}`);
-      return res.data;
-    },
-     enabled: !!user?.email
+queryFn: async () => {
+  const res = await axiosSecure.get(`/bookings?touristEmail=${user?.email}`);
+  return res.data;
+},
+enabled: !!user?.email
   });
 
   const handleCancel = async (id) => {
@@ -39,8 +38,6 @@ const MyBookings = () => {
 
   if (isLoading) return <div className="text-center py-10">Loading...</div>;
 
-// console.log('User Email:', user?.email);
-// console.log('Bookings:', bookings);
     return (
     <div className="p-4">
       <h2 className="text-2xl font-semibold mb-4">My Bookings</h2>

@@ -6,6 +6,8 @@ import { useForm } from 'react-hook-form';
 import useAuth from '../../hooks/useAuth';
 import SocialLogin from '../../Shared/SocialLogin';
 import Swal from 'sweetalert2';
+import { axiosSecure } from '../../hooks/useAxiosSecure';
+
 const Register = () => {
 
  const {register,handleSubmit,
@@ -45,10 +47,20 @@ const [timeLeft, setTimeLeft] = useState({
 
   const onSubmit = data =>{
      console.log(data);
+
      console.log(createUser);
       createUser(data.email,data.password)
-       .then(result => {
+       .then(async (result)  => {
       console.log(result.user)
+  // update userinfo in the database
+const userInfo = {
+        email: data.email,
+        role: 'user', // default role
+        created_at: new Date().toISOString(),
+        last_log_in: new Date().toISOString()
+                }
+  const userRes = await axiosSecure.post('/users', userInfo);
+                console.log(userRes.data);              
 
   Swal.fire({
           icon: 'success',
