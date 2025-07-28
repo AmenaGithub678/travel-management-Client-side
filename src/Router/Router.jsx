@@ -45,10 +45,10 @@ const router = createBrowserRouter([
         path: '/guide/:id',
         Component: TourGuideList,
         },
-        // {
-        //     path: 'tour-guide/:id',
-        //     Component: TourGuideProfile,
-        // },
+         {
+             path: 'tour-guide/:id',
+             Component: TourGuideProfile,
+         },
         {
             path: 'community',
             Component: Community,
@@ -104,7 +104,10 @@ const router = createBrowserRouter([
       },
       { 
         path: 'join-guide', 
-        element: <JoinGuide></JoinGuide> ,
+
+        element: <PrivateRoute>
+          <JoinGuide></JoinGuide>
+        </PrivateRoute> ,
       },
       {
         path: 'add-stories', 

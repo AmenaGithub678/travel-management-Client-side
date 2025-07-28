@@ -7,5 +7,4 @@ const AssignedTours = () => {
         </div>
     );
 };
-
 export default AssignedTours;

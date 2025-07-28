@@ -10,8 +10,6 @@ const navigate = useNavigate();
         signInWithGoogle()
             .then(async (result)  => {
                 console.log(result.user)
-
-
                 const user = result.user;
                 console.log(result.user);
                 // update userinfo in the database

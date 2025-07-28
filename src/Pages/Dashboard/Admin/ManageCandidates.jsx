@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 const ManageCandidates = () => {
 
 
-  // ✅ Get all guide applications
+  // Get all guide applications
   const { data: applications = [], refetch, isLoading } = useQuery({
     queryKey: ['guideApplications'],
     queryFn: async () => {
@@ -15,12 +15,12 @@ const ManageCandidates = () => {
     }
   });
 
-  // ✅ Accept handler: Promote + Delete
+  
   const handleAccept = async (email) => {
     try {
-      // 1. Promote user to tour-guide
+     
       await axiosSecure.patch(`/users/role/${email}`);
-      // 2. Delete the application
+
       await axiosSecure.delete(`/apply-guide/${email}`);
       Swal.fire('Accepted!', 'User promoted to Tour Guide.', 'success');
       refetch();

@@ -49,6 +49,9 @@ const navItems = <>
                isActive ? "text-secondary font-bold" : "text-primary font-semibold"
              } to='/trips'>Trips</NavLink></li>
 
+
+
+
     </>
 
 
@@ -73,10 +76,10 @@ const navItems = <>
           >
             {navItems}
 
-            {/* ✅ Login/Register inside dropdown on mobile only */}
+            {/* Login/Register inside dropdown on mobile only */}
             {!user && (
               <>
-                <li >
+                <li>
                   <Link to="/register" className="btn btn-outline btn-success mb-2 w-20">
                     Register
                   </Link>

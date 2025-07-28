@@ -7,7 +7,6 @@ import { axiosSecure } from '../../../hooks/useAxiosSecure';
 
 const MyBookings = () => {
   const { user } = useAuth();
-
   const { 
     data: bookings = [], isLoading 
   } = useQuery({

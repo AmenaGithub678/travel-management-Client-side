@@ -1,13 +1,9 @@
-
-
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router';
 import { axiosSecure } from '../../../hooks/useAxiosSecure';
-
 const TourGuideProfile = () => {
-  const { id } = useParams();
+const { id } = useParams();
   
-
   // Fetch guide details
   const { data: guide = {}, isLoading: guideLoading } = useQuery({
     queryKey: ['guide', id],
@@ -49,7 +45,7 @@ const TourGuideProfile = () => {
           <p><strong>Experience:</strong> {guide.experience} years</p>
           <p><strong>Price Range:</strong> {guide.priceRange}</p>
           <p><strong>Rating:</strong> {guide.rating} ⭐ ({guide.reviews} reviews)</p>
-          <p className="italic">"{guide.bio}"</p>
+         
         </div>
       </div>
 

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import {  useNavigate } from 'react-router';
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -6,26 +6,21 @@ import "swiper/css/free-mode";
 import { FreeMode } from "swiper/modules";
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
-
-
 const TourGuideList = () => {
   
     const navigate = useNavigate();
   const axiosSecure = useAxiosSecure();
 
-  const { data: guides = [], isLoading } = useQuery({
-    queryKey: ['tourGuides'],
-    queryFn: async () => {
-      const res = await axiosSecure.get('/tour-guides');
-      return res.data;
-    },
-  });
-
+ const { data: guides = [], isLoading } = useQuery({
+  queryKey: ['randomTourGuides'],
+  queryFn: async () => {
+    const res = await axiosSecure.get('/tour-guides/random');
+    return res.data;
+  },
+});
   if (isLoading) {
     return <p className="text-center py-10">Loading...</p>;
   }
-
-
     return (
         <section className="py-10">
       <h2 className="text-2xl font-semibold mb-6">Meet Our Tour Guides</h2>
@@ -42,7 +37,7 @@ const TourGuideList = () => {
       >
         {guides.map((guide) => (
           <SwiperSlide key={guide._id}>
-            <div
+            <div  
               onClick={() => navigate(`/tour-guide/${guide._id}`)}
               className="cursor-pointer border rounded-xl p-4 shadow hover:shadow-lg transition duration-300 bg-white"
             >
@@ -54,16 +49,14 @@ const TourGuideList = () => {
               <div className="mt-4 space-y-1">
                 <h3 className="text-xl font-semibold">{guide.name}</h3>
                 <p className="text-sm text-gray-500">{guide.city}</p>
+                <p className="text-sm text-gray-500">{guide.experience}</p>
+                
                 <p className="text-sm">
                   <strong>Languages:</strong> {guide.languages?.join(', ')}
                 </p>
                 <p className="text-sm">
                   <strong>Rating:</strong> {guide.rating} ⭐ ({guide.reviews} Reviews)
-                </p>
-                
-                <p className="text-sm italic">"{guide.bio}"</p>
-                <p className="text-sm font-medium">Rate: {guide.price}</p>
-                <p className="text-sm text-green-600">Available: {guide.availability}</p>
+                </p>      
               </div>
             </div>
           </SwiperSlide>

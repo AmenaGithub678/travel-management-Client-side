@@ -19,8 +19,6 @@ const { data: stories = [] } = useQuery({
     return res.data;
   },
 });
-  
-
   const handleShare = () => {
     if (!user) {
       navigate('/login');

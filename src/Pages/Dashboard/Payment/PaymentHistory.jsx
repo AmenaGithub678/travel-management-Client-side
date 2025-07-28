@@ -6,9 +6,6 @@ import useAuth from '../../../hooks/useAuth';
 const PaymentHistory = () => {
 const { user } = useAuth();
 const email = user?.email;
-
-
-
   const { data: payments = [], isPending } = useQuery({
     queryKey: ['paymentHistory', user?.email],
     queryFn: async () => {

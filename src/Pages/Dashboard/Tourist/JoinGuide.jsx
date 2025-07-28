@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
-
-
 const JoinGuide = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();

@@ -1,8 +1,11 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router';
 import TourLogo from '../Logo/TourLogo';
+import useUserRole from '../hooks/UseUserRole/useUserRole';
 
 const DashBoardLayout = () => {
+const { role, loading } = useUserRole();
+  if (loading) return <div>Loading Dashboard...</div>;
     return (
        <div className="drawer lg:drawer-open">
      <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -36,45 +39,44 @@ const DashBoardLayout = () => {
     </div>
     <div className="drawer-side">
         <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
-        <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4"> 
-            {/* Sidebar content here */}
-            <TourLogo></TourLogo>
-            <li><NavLink to="/">Home</NavLink></li>
-            {/* Touriest */}
-            <li>
-                <NavLink to="/dashboard/my-bookings">My Bookings</NavLink>
-            </li>
-            <li>
-                <NavLink to="/dashboard/payment-history">Payment-History</NavLink>
-            </li>
-            <li>
-                <NavLink to="/dashboard/manage-stories">Manage-stories</NavLink>
-            </li>
-            <li>
-                <NavLink to="/dashboard/join-guide">join-guide</NavLink>
-            </li>
-            <li>
-                <NavLink to="/dashboard/add-stories">Add-stories</NavLink>
-            </li>
-            <li>
-                <NavLink to="/dashboard/tourist-profile">Manage Profile</NavLink>
-            </li>
-{/* GUIDE */}
-            <li>
-                <NavLink to="/dashboard/assigned-tours">My Assigned Tour</NavLink>
-            </li>
-            
-            {/* ADMIN */}
-             <li>
-                <NavLink to="/dashboard/admin-profile">Admin Profile</NavLink>
-            </li>
-            <li>
-                <NavLink to="/dashboard/add-packages">Add-packages</NavLink>
-            </li>
- <li>
-<NavLink to="/dashboard/ManageCandidates">Manage Candidates</NavLink>
- </li>
-        </ul>
+        <ul className="menu bg-accent text-base-content min-h-full w-80 p-4">
+    <TourLogo />
+
+    <li><NavLink to="/">Home</NavLink></li>
+
+    {/* Shared by All */}
+    <li><NavLink to="/dashboard/add-stories">Add Stories</NavLink></li>
+    <li><NavLink to="/dashboard/manage-stories">Manage Stories</NavLink></li>
+
+    {/* Tourist Only */}
+    {role === 'tourist' && (
+        <>
+            <li><NavLink to="/dashboard/my-bookings">My Bookings</NavLink></li>
+            <li><NavLink to="/dashboard/payment-history">Payment History</NavLink></li>
+            <li><NavLink to="/dashboard/join-guide">Join as Guide</NavLink></li>
+            <li><NavLink to="/dashboard/tourist-profile">Manage Profile</NavLink></li>
+        </>
+    )}
+
+    {/* Tour Guide Only */}
+    {role === 'tour-guide' && (
+        <>
+            <li><NavLink to="/dashboard/assigned-tours">My Assigned Tours</NavLink></li>
+            <li><NavLink to="/dashboard/guide-profile">Manage Profile</NavLink></li>
+        </>
+    )}
+
+    {/* Admin Only */}
+    {role === 'admin' && (
+        <>
+            <li><NavLink to="/dashboard/admin-profile">Manage Profile</NavLink></li>
+            <li><NavLink to="/dashboard/assigned-tours">My Assigned Tours</NavLink></li>
+            <li><NavLink to="/dashboard/add-packages">Add Packages</NavLink></li>
+            <li><NavLink to="/dashboard/ManageCandidates">Manage Candidates</NavLink></li>
+        </>
+    )}
+</ul>
+
     </div>
     </div>
     );

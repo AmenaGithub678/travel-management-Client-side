@@ -3,10 +3,8 @@ import { AuthContext } from '../AuthContext/AuthContext';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import { auth } from '../../firebase/firebase.init';
 
-
 const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({children}) => {
-
 const [user, setUser] = useState(null);
 // const[userRole,setUserRole]=useState(null);
 const [loading, setLoading] = useState(true);
