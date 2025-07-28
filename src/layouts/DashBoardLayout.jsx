@@ -45,6 +45,9 @@ const DashBoardLayout = () => {
                 <NavLink to="/dashboard/my-bookings">My Bookings</NavLink>
             </li>
             <li>
+                <NavLink to="/dashboard/payment-history">Payment-History</NavLink>
+            </li>
+            <li>
                 <NavLink to="/dashboard/manage-stories">Manage-stories</NavLink>
             </li>
             <li>

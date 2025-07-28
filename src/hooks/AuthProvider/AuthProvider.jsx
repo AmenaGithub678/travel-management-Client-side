@@ -41,7 +41,7 @@ const logOut = () =>{
         }
     }, []);
 
-
+console.log(user);
     const authInfo ={
      user,
      loading,
@@ -51,9 +51,9 @@ const logOut = () =>{
      logOut
     }
     return (
-    <AuthContext value={authInfo}>
+    <AuthContext.Provider value={authInfo}>
        {children}
-    </AuthContext>
+    </AuthContext.Provider>
     );
 };
 

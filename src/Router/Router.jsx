@@ -22,6 +22,8 @@ import AddStories from '../Pages/Dashboard/Tourist/AddStories';
 import UpdateStory from '../Pages/Dashboard/Tourist/UpdateStory';
 import Profile from '../Pages/Dashboard/Tourist/Profile';
 import AddPackage from '../Pages/Dashboard/Admin/AddPackage';
+import Payment from '../Pages/Dashboard/Payment/Payment';
+import PaymentHistory from '../Pages/Dashboard/Payment/PaymentHistory';
 
 const router = createBrowserRouter([
   {
@@ -85,6 +87,14 @@ const router = createBrowserRouter([
         path: 'my-bookings', 
         element: <MyBookings></MyBookings> 
       },
+      {
+      path: 'payment/:bookingId', 
+        element: <Payment></Payment>
+      },
+      {
+    path:'payment-history',
+    element: <PaymentHistory></PaymentHistory>
+      },
       { 
         path: 'manage-stories', 
         element: <ManageStories></ManageStories>
@@ -106,10 +116,10 @@ const router = createBrowserRouter([
        element: <Profile></Profile>
       },
 
-       // Guide
-      // { path: 'my-assigned-tours', element: <GuideRoute><MyAssignedTours /></GuideRoute> },
-      // { path: 'add-stories', element: <GuideRoute><AddStories /></GuideRoute> },
-      // { path: 'manage-stories', element: <GuideRoute><ManageStories /></GuideRoute> },
+//  Guide
+// { path: 'my-assigned-tours', element: <GuideRoute><MyAssignedTours /></GuideRoute> },
+// { path: 'add-stories', element: <GuideRoute><AddStories /></GuideRoute> },
+// { path: 'manage-stories', element: <GuideRoute><ManageStories /></GuideRoute> },
 
 // ADMIN
 {

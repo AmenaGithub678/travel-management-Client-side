@@ -107,9 +107,9 @@ const BookinForm = ({ selectedPackage }) => {
           ))}
         </select>
       </div>
-<Link to='/dashboard/my-bookings'>
+
  <button type="submit" className="btn btn-primary w-full">Book Now</button>
-</Link>
+
 
     </form>
     );
