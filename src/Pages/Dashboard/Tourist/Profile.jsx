@@ -6,8 +6,6 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { Link, NavLink, useNavigate } from 'react-router';
 import { useQuery } from '@tanstack/react-query';
 
-
-
 const Profile = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
@@ -110,18 +108,18 @@ const Profile = () => {
                 className="input input-bordered w-full"
                 placeholder="Photo URL"
               />
-              {/* <input
+               <input
                 type="text"
                 {...register('phone')}
                 className="input input-bordered w-full"
                 placeholder="Phone Number"
-              /> */}
-              {/* <input
+              /> 
+               <input
                 type="text"
                 {...register('address')}
                 className="input input-bordered w-full"
                 placeholder="Address"
-              /> */}
+              /> 
               <input
                 type="email"
                 value={userInfo?.email}

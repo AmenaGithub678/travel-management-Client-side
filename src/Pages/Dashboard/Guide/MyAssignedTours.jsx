@@ -25,7 +25,7 @@ const MyAssignedTours = () => {
         refetch();
       }
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       Swal.fire('Error', 'Something went wrong', 'error');
     }
   };
@@ -49,7 +49,7 @@ const MyAssignedTours = () => {
           refetch();
         }
       } catch (error) {
-        console.error(error);
+        // console.error(error);
         Swal.fire('Error', 'Something went wrong', 'error');
       }
     }

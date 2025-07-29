@@ -27,6 +27,7 @@ import PaymentHistory from '../Pages/Dashboard/Payment/PaymentHistory';
 import MyAssignedTours from '../Pages/Dashboard/Guide/MyAssignedTours';
 import ManageProfile from '../Pages/Dashboard/Admin/ManageProfile';
 import ManageCandidates from '../Pages/Dashboard/Admin/ManageCandidates';
+import GuideProfile from '../Pages/Dashboard/Guide/GuideProfile';
 
 const router = createBrowserRouter([
   {
@@ -126,8 +127,10 @@ const router = createBrowserRouter([
  { path: 'assigned-tours',
    element: <MyAssignedTours></MyAssignedTours>
   },
-//  { path: 'add-stories', element: <GuideRoute><AddStories /></GuideRoute> },
-//  { path: 'manage-stories', element: <GuideRoute><ManageStories /></GuideRoute> },
+{
+  path: 'guide-profile',
+  element: <GuideProfile></GuideProfile>
+},
 
 // ADMIN
 {

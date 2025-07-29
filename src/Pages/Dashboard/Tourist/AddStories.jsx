@@ -31,7 +31,7 @@ const AddStories = () => {
         navigate('/dashboard/manage-stories');
       }
     } catch (err) {
-      console.error(err);
+      // console.error(err);
       Swal.fire({
         icon: 'error',
         title: 'Submission Failed!',

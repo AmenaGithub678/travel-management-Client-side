@@ -38,14 +38,9 @@ const { id } = useParams();
         </div>
         <div className="space-y-3">
           <h2 className="text-3xl font-bold">{guide.name}</h2>
-          <p className="text-gray-600">📍 City: {guide.city}</p>
           <p className="text-gray-600">📧 Email: {guide.email}</p>
-          <p><strong>Languages:</strong> {guide.languages?.join(', ')}</p>
-          <p><strong>Specialty:</strong> {guide.specialty}</p>
-          <p><strong>Experience:</strong> {guide.experience} years</p>
-          <p><strong>Price Range:</strong> {guide.priceRange}</p>
-          <p><strong>Rating:</strong> {guide.rating} ⭐ ({guide.reviews} reviews)</p>
-         
+          <p className="text-gray-600">📞 Phone: {guide.phone}</p>
+          <p className="text-gray-600">🏠 Address: {guide.address}</p>
         </div>
       </div>
 

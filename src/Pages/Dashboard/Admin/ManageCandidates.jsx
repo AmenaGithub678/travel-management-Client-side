@@ -4,8 +4,6 @@ import { axiosSecure } from '../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 
 const ManageCandidates = () => {
-
-
   // Get all guide applications
   const { data: applications = [], refetch, isLoading } = useQuery({
     queryKey: ['guideApplications'],
@@ -14,14 +12,9 @@ const ManageCandidates = () => {
       return res.data;
     }
   });
-
-  
   const handleAccept = async (email) => {
     try {
-     
-      await axiosSecure.patch(`/users/role/${email}`);
-
-      await axiosSecure.delete(`/apply-guide/${email}`);
+      await axiosSecure.patch(`/users/role/${email}`);     
       Swal.fire('Accepted!', 'User promoted to Tour Guide.', 'success');
       refetch();
     } catch (error) {

@@ -9,9 +9,9 @@ const navigate = useNavigate();
     const handleGoogleSignIn = () => {
         signInWithGoogle()
             .then(async (result)  => {
-                console.log(result.user)
+                // console.log(result.user)
                 const user = result.user;
-                console.log(result.user);
+                // console.log(result.user);
                 // update userinfo in the database
                 const userInfo = {
                     email: user.email,
@@ -19,14 +19,12 @@ const navigate = useNavigate();
                     created_at: new Date().toISOString(),
                     last_log_in: new Date().toISOString()
                 }
-
                 const res = await axiosSecure.post('/users', userInfo);
-                console.log('user update info', res.data)
-
+                // console.log('user update info', res.data)
                 navigate("/");
             })
             .catch(error => {
-                console.error(error);
+                // console.error(error);
             })
     }
     return (

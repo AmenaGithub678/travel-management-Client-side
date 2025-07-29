@@ -44,7 +44,7 @@ function PaymentForm({ onSuccess }) {
       });
 
       if (result.error) {
-        console.error("[Payment Error]", result.error.message);
+        // console.error("[Payment Error]", result.error.message);
         alert("❌ " + result.error.message);
       } else if (result.paymentIntent.status === "succeeded") {
         alert("✅ Payment successful!");
@@ -59,11 +59,11 @@ function PaymentForm({ onSuccess }) {
           "api/createBooking",
           bookingHistory
         );
-        console.log(response.data);
+        // console.log(response.data);
         onSuccess?.();
       }
     } catch (error) {
-      console.error("Server error:", error.message);
+      // console.error("Server error:", error.message);
       alert("❌ Server error: " + error.message);
     }
 

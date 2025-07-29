@@ -7,7 +7,7 @@ import { useParams } from 'react-router';
 
 const Payment = () => {
     const { bookingId } = useParams();
-    console.log(bookingId);
+    // console.log(bookingId);
     return (
          <Elements stripe={stripePromise}>
            <PaymentForm bookingId={ bookingId }></PaymentForm>

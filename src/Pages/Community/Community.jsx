@@ -26,7 +26,7 @@ const axiosSecure = useAxiosSecure();
         setLoading(false);
       })
       .catch(err => {
-        console.error('Error fetching stories:', err);
+        // console.error('Error fetching stories:', err);
         setError('Failed to load stories.');
         setLoading(false);
       });

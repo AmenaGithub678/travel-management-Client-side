@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios'
 export const axiosSecure = axios.create(
     {
-  baseURL: `http://localhost:5000`,
+  baseURL: `https://touriest-management-system.vercel.app`,
     }
 )
 const useAxiosSecure = () => {

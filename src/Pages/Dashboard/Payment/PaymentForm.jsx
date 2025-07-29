@@ -20,14 +20,14 @@ const { data: booking = {}, isPending } = useQuery({
      queryKey: ['bookingPayment', bookingId],
      queryFn: async () => {
          const res = await axiosSecure.get(`/bookings/${bookingId}`);
-        //   const res = await axios.get(`http://localhost:5000/bookings/${bookingId}`);
+        //   const res = await axios.get(`https://touriest-management-system.vercel.app/bookings/${bookingId}`);
          return res.data;
 
      },
      enabled: !!bookingId,
  });
-console.log(bookingId);
-console.log(booking);
+// console.log(bookingId);
+// console.log(booking);
      if (isPending) {
        return <p className="text-center text-lg font-semibold">...loading payment info</p>;
    }
@@ -51,7 +51,7 @@ const { error, paymentMethod } = await stripe.createPaymentMethod({
         }
         else {
              setError('');
-            console.log('payment method', paymentMethod);
+            // console.log('payment method', paymentMethod);
 
 //  step-2: create payment intent
 const res = await axiosSecure.post('/create-payment-intent', 
@@ -76,7 +76,7 @@ const result = await stripe.confirmCardPayment(clientSecret, {
             } else {
                 setError('');
                 if (result.paymentIntent.status === 'succeeded') {
-                    console.log('Payment succeeded!');
+                    // console.log('Payment succeeded!');
                     const transactionId = result.paymentIntent.id;
 // step-4 mark parcel paid also create payment history
     const paymentData = {
@@ -105,7 +105,7 @@ if (paymentRes.data.insertedId) {
 
     navigate('/dashboard/my-bookings');
   } else {
-    console.warn("Payment saved, but booking status was not updated.");
+    // console.warn("Payment saved, but booking status was not updated.");
   }
 }
 

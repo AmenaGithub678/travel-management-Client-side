@@ -49,14 +49,7 @@ const TourGuideList = () => {
               <div className="mt-4 space-y-1">
                 <h3 className="text-xl font-semibold">{guide.name}</h3>
                 <p className="text-sm text-gray-500">{guide.city}</p>
-                <p className="text-sm text-gray-500">{guide.experience}</p>
-                
-                <p className="text-sm">
-                  <strong>Languages:</strong> {guide.languages?.join(', ')}
-                </p>
-                <p className="text-sm">
-                  <strong>Rating:</strong> {guide.rating} ⭐ ({guide.reviews} Reviews)
-                </p>      
+                <p className="text-sm text-gray-500">{guide.experience}</p>   
               </div>
             </div>
           </SwiperSlide>

@@ -34,7 +34,7 @@ const [stories, setStories] = useState([]);
           setStories(stories.filter(story => story._id !== id));
         }
       } catch (err) {
-        console.error(err);
+        // console.error(err);
         Swal.fire('Error!', 'Something went wrong.', 'error');
       }
     }

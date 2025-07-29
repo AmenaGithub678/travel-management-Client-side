@@ -20,12 +20,12 @@ const {signIn}= useAuth();
    const navigate = useNavigate();           
 
      const onSubmit = data => {
-        console.log(data);
+        // console.log(data);
 
          signIn(data.email, data.password)
          .then((result) => {
      // Signed in 
-      console.log(result.user);
+      // console.log(result.user);
       Swal.fire({
           icon: 'success',
           title: 'Login Successfully!!',
@@ -33,14 +33,15 @@ const {signIn}= useAuth();
           showConfirmButton: false,
           timer: 2000
         });
+        
      navigate("/");
    })
    .catch((error) => {
-    console.log(error);
+    // console.log(error);
    });
 
     }
-        const handleResetPassward = () => {
+const handleResetPassward = () => {
       const email = getValues("email");
       if (!email) {
        alert('successfully reset your password')

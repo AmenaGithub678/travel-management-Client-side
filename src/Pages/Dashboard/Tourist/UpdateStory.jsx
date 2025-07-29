@@ -60,7 +60,7 @@ const UpdateStory = () => {
         Swal.fire('Info', 'No changes were made.', 'info');
       }
     } catch (err) {
-      console.error(err);
+      // console.error(err);
       Swal.fire('Error!', 'Failed to update story', 'error');
     }
   };

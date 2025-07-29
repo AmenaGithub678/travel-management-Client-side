@@ -10,8 +10,7 @@ const GuideCard = ({ guide }) => {
 </figure>
 <div className="card-body text-center mx-auto">
     <h2 className="card-title">{name}</h2>
-    <p className="text-sm">Specialty: {specialty}</p>
-    <p className="text-sm">Experience: {experience} years</p>
+    
     <div className="card-actions justify-end">
                     <Link 
                       to={`/tour-guide/${_id}`}

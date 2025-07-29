@@ -46,12 +46,12 @@ const [timeLeft, setTimeLeft] = useState({
   }, []);
 
   const onSubmit = data =>{
-     console.log(data);
+    //  console.log(data);
 
-     console.log(createUser);
+    //  console.log(createUser);
       createUser(data.email,data.password)
        .then(async (result)  => {
-      console.log(result.user)
+      // console.log(result.user)
   // update userinfo in the database
 const userInfo = {
         email: data.email,
@@ -60,7 +60,7 @@ const userInfo = {
         last_log_in: new Date().toISOString()
                 }
   const userRes = await axiosSecure.post('/users', userInfo);
-                console.log(userRes.data);              
+                // console.log(userRes.data);              
 
   Swal.fire({
           icon: 'success',
@@ -71,7 +71,7 @@ const userInfo = {
         });
              })
             .catch(error => {
-                 console.error(error);
+                //  console.error(error);
              })
  }
 

@@ -27,7 +27,7 @@ const JoinGuide = () => {
         reset();
       }
     } catch (err) {
-      console.error("Application failed:", err);
+      // console.error("Application failed:", err);
     } finally {
       setSubmitting(false);
     }
