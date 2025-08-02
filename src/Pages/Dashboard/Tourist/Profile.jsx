@@ -79,15 +79,12 @@ const Profile = () => {
         >
           ✏️ Edit Profile
         </button>
-
  <button
           className="btn btn-primary"
           onClick={() => navigate('/dashboard/join-guide')}
         >
-          🧭 Apply for Tour Guide
-        </button>
-
-       
+          🧭 Go Back To Apply page
+</button>
       </div>
 
       {/* Edit Modal */}

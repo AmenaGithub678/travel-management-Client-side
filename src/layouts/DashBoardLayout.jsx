@@ -61,7 +61,7 @@ const { role, roleLoading } = useUserRole();
           {role === 'tour-guide' && (
             <>
     <li><NavLink to="/dashboard/assigned-tours">My Assigned Tours</NavLink></li>
-    <li><NavLink to="/dashboard/guide-profile">Guide Profile</NavLink></li>
+   
             </>
           )}
 
@@ -71,6 +71,7 @@ const { role, roleLoading } = useUserRole();
     <li><NavLink to="/dashboard/admin-profile">Manage Profile</NavLink></li>
     <li><NavLink to="/dashboard/add-packages">Add Packages</NavLink></li>
     <li><NavLink to="/dashboard/ManageCandidates">Manage Candidates</NavLink></li>
+    <li><NavLink to="/dashboard/manage-users">Manage Users</NavLink></li>
             </>
           )}
         </ul>

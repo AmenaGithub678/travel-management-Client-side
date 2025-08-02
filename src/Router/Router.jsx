@@ -27,7 +27,7 @@ import PaymentHistory from '../Pages/Dashboard/Payment/PaymentHistory';
 import MyAssignedTours from '../Pages/Dashboard/Guide/MyAssignedTours';
 import ManageProfile from '../Pages/Dashboard/Admin/ManageProfile';
 import ManageCandidates from '../Pages/Dashboard/Admin/ManageCandidates';
-import GuideProfile from '../Pages/Dashboard/Guide/GuideProfile';
+import ManageUsers from '../Pages/Dashboard/Admin/ManageUsers';
 
 const router = createBrowserRouter([
   {
@@ -105,18 +105,17 @@ const router = createBrowserRouter([
       },
       { 
         path: 'join-guide', 
-
         element: <PrivateRoute>
           <JoinGuide></JoinGuide>
         </PrivateRoute> ,
       },
       {
         path: 'add-stories', 
-        element:  <AddStories></AddStories>
+        element: <AddStories></AddStories>
       },
       {
         path: 'update-story/:id', 
-        element:  <UpdateStory></UpdateStory>
+        element: <UpdateStory></UpdateStory>
       },
       {
         path: 'tourist-profile',
@@ -127,15 +126,16 @@ const router = createBrowserRouter([
  { path: 'assigned-tours',
    element: <MyAssignedTours></MyAssignedTours>
   },
-{
-  path: 'guide-profile',
-  element: <GuideProfile></GuideProfile>
-},
+
 
 // ADMIN
 {
 path: 'admin-profile',
 element:<ManageProfile></ManageProfile>
+},
+{
+  path: 'manage-users',
+  element:<ManageUsers></ManageUsers>
 },
 {
   path: 'ManageCandidates',

@@ -1,6 +1,7 @@
 import React from 'react';
 import useAuth from '../hooks/useAuth';
 import { useLocation } from 'react-router';
+ import { Navigate } from 'react-router';
 import { RingLoader } from 'react-spinners';
 const PrivateRoute = ({children}) => {
 
