@@ -1,63 +1,68 @@
 import React from 'react';
-import { Link } from 'react-router';
-import { NavLink } from 'react-router';
-import { useNavigate } from 'react-router';
+import { Link, NavLink, useNavigate } from 'react-router';
 import TourLogo from '../Logo/TourLogo';
 import useAuth from '../hooks/useAuth';
 import Swal from 'sweetalert2';
-const Navbar = () => {
-const {user,logOut}= useAuth();
-const navigate = useNavigate();
 
-const handleSignOut = () =>{
-         logOut()
-         .then( () =>{
-    Swal.fire({
+const Navbar = () => {
+  const { user, logOut } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSignOut = () => {
+    logOut()
+      .then(() => {
+        Swal.fire({
           icon: 'success',
-          title: 'Login Successfully!!',
+          title: 'Logout Successfully!!',
           text: 'You have successfully logged Out!',
           showConfirmButton: false,
-          timer: 2000
+          timer: 2000,
         });
-
-      navigate("/login");
- })
-    
-     .catch((error)=>{
-    //  console.log(error);
-   })
-     }
-const navItems = <>
- <li className=' font-semibold 
-       text-lg 
-       text-primary'>
-     <NavLink className={({       isActive }) =>
-               isActive ? "text-secondary font-bold" : "text-primary font-semibold"
-            } to='/'>Home</NavLink></li>
-           
-       <li className=' font-semibold text-lg text-primary'>
-           <NavLink className={({ isActive }) =>
-               isActive ? "text-secondary font-bold" : "text-primary font-semibold"
-             } 
-             to='/community'>Community</NavLink></li>
-       <li className=' font-semibold text-lg text-[#f000b8]'>
-                 <NavLink className={({ isActive }) =>
-               isActive ? "text-secondary font-bold" : "text-primary font-semibold"
-             } to='/about-us'>About</NavLink></li>
-       <li className=' font-semibold text-lg text-[#f000b8]'>
-                 <NavLink className={({ isActive }) =>
-               isActive ? "text-secondary font-bold" : "text-primary font-semibold"
-             } to='/trips'>Trips</NavLink></li>
+        navigate("/login");
+      })
+      .catch((error) => {});
+  };
 
 
-
-
+  const publicRoutes = (
+    <>
+      <li>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "text-secondary font-bold" : "text-primary font-semibold"
+          }
+          to="/"
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "text-secondary font-bold" : "text-primary font-semibold"
+          }
+          to="/community"
+        >
+          Community
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "text-secondary font-bold" : "text-primary font-semibold"
+          }
+          to="/about-us"
+        >
+          About
+        </NavLink>
+      </li>
     </>
+  );
 
-
-    return (
- <div className="navbar bg-base-100 shadow-sm">
-      <div className="navbar-start">
+  return (
+    <div className="navbar shadow-sm bg-info sticky 
+              top-0 z-50 mx-auto">
+      <div className="navbar-start mx-auto px-4">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
@@ -74,9 +79,34 @@ const navItems = <>
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
           >
-            {navItems}
+            {publicRoutes}
 
-            {/* Login/Register inside dropdown on mobile only */}
+            {/* ⭐ Changed: Trips & Offers শুধু লগইন করা অবস্থায় dropdown এ আসবে */}
+            {user && (
+              <>
+                <li>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? "text-secondary font-bold" : "text-primary font-semibold"
+                    }
+                    to="/trips"
+                  >
+                    Trips
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive ? "text-secondary font-bold" : "text-primary font-semibold"
+                    }
+                    to="/offers"
+                  >
+                    Offers
+                  </NavLink>
+                </li>
+              </>
+            )}
+
             {!user && (
               <>
                 <li>
@@ -98,12 +128,14 @@ const navItems = <>
         </div>
       </div>
 
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{navItems}</ul>
+      {/* ⭐ Changed: Center part এখন শুধু public routes দেখাবে */}
+      <div className="navbar-center hidden lg:flex max-w-7xl mx-auto px-4">
+        <ul className="menu menu-horizontal px-1">
+          {publicRoutes}
+        </ul>
       </div>
 
-      <div className="navbar-end">
-        {/* ✅ Show profile pic + dropdown if logged in */}
+      <div className="navbar-end max-w-7xl mx-auto px-4">
         {user ? (
           <div className="dropdown dropdown-end">
             <div
@@ -129,9 +161,15 @@ const navItems = <>
               <li>
                 <Link to="/dashboard">Dashboard</Link>
               </li>
+
+              {/* ⭐ Changed: এখানে Trips & Offers ড্রপডাউনেও রাখা হলো */}
               <li>
-                <Link to="/offers">Offer Announcements</Link>
+                <Link to="/trips">Trips</Link>
               </li>
+              <li>
+                <Link to="/offers">Offers</Link>
+              </li>
+
               <li>
                 <button
                   onClick={handleSignOut}
@@ -143,19 +181,18 @@ const navItems = <>
             </ul>
           </div>
         ) : (
-          // ✅ Desktop login/register buttons
           <div className="hidden lg:flex gap-2">
             <Link to="/register">
-              <button className="btn btn-outline btn-success">Register</button>
+              <button className="btn btn-outline btn-primary">Register</button>
             </Link>
             <Link to="/login">
-              <button className="btn btn-outline btn-success">LogIn</button>
+              <button className="btn btn-outline btn-primary">LogIn</button>
             </Link>
           </div>
         )}
       </div>
     </div>
-    );
+  );
 };
 
 export default Navbar;

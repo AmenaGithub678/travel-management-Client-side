@@ -42,7 +42,7 @@ export default function Overview() {
   }, []);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden mt-10">
+    <div className="relative  h-screen overflow-hidden ">
       {/* Background Video */}
       <video
         className="absolute top-0 left-0 w-full h-full object-cover"

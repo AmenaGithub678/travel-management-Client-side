@@ -2,7 +2,7 @@ import React from 'react';
 import faqImage from'../assets/banner/banner6.jpg'
 const Faq = () => {
     return (
-    <div className="max-w-7xl mx-auto px-4 py-12">
+    <div className="bg-accent max-w-7xl mx-auto px-4 py-12">
       <div className="text-center mb-10">
         <h1 className="font-bold text-4xl text-primary">
           Frequently Asked Questions
@@ -59,10 +59,10 @@ const Faq = () => {
                 name="my-accordion-3"
                 defaultChecked={index === 0}
               />
-              <div className="collapse-title font-semibold text-xl text-[#f000b8]">
+              <div className="collapse-title font-semibold text-xl text-primary">
                 {faq.question}
               </div>
-              <div className="collapse-content text-lg font-normal text-info tracking-wide">
+              <div className="collapse-content text-lg font-normal text-secondary tracking-wide">
                 {faq.answer}
               </div>
             </div>

@@ -54,7 +54,7 @@ navigation
                 alt={`Banner ${index + 1}`}
                 className="w-full h-full object-cover" 
               />
-              <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center p-10 text-center">
+              <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center text-center">
                  <h1 className="mb-4 text-4xl font-bold max-w-3xl text-primary">
                   <Typewriter
                     words={[slide.title]}
@@ -66,7 +66,8 @@ navigation
                     delaySpeed={2000}
                   />
                 </h1>
-                <p className="mb-6 max-w-2xl text-lg text-info text-center">{slide.text}</p>
+                <p className="mb-6 max-w-2xl text-lg text-secondary
+                text-center">{slide.text}</p>
               </div>
             </div>
           </SwiperSlide>

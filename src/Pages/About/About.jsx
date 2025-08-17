@@ -22,12 +22,12 @@ const projects = [
     return (
       <>
       {/* About Section */}
-      <div className="min-h-screen bg-black text-white flex flex-col md:flex-row items-center justify-center px-6 py-12 gap-10">
+<div className="min-h-screen bg-info  flex flex-col md:flex-row items-center justify-center px-6 gap-8">
         {/* Left Side */}
         <div className="flex-1 text-left">
-          <h1 className="text-5xl font-bold mb-4">Amena Akter</h1>
+          <h1 className="text-secondary text-5xl font-bold mb-6">Amena Akter</h1>
 
-          <p className="text-xl text-green-400 mb-3">
+          <p className="text-xl text-primary mb-3">
             <Typewriter
               words={["MERN Stack Developer"]}
               loop={0}
@@ -49,7 +49,7 @@ const projects = [
           <div className="flex gap-4">
             <a
               href="#contact"
-              className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition duration-200"
+              className="bg-primary hover:bg-secondary text-white font-semibold px-6 py-3 rounded-lg shadow-md transition duration-200"
             >
               Contact Me
             </a>
@@ -57,7 +57,9 @@ const projects = [
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-transparent border border-green-500 hover:bg-green-600 hover:text-white text-green-400 font-semibold px-6 py-3 rounded-lg transition duration-200"
+              className="bg-transparent border border-secondary
+               hover:bg-primary hover:text-white
+                text-secondary font-semibold px-6 py-3 rounded-lg transition duration-200"
             >
               See Resume
             </a>
@@ -69,15 +71,16 @@ const projects = [
           <img
             src="https://i.ibb.co/27vRv1Cb/11a54910-bc29-4f41-a366-3b31bc3fbcd4.jpg"
             alt="Amena Akter"
-            className="w-40 h-40 lg:w-72 lg:h-72 object-cover rounded-full border-4 border-green-500 shadow-xl"
+            className="w-40 h-40 lg:w-72 lg:h-72 object-cover rounded-full border-4 border-primary shadow-xl"
           />
         </div>
       </div>
 
       {/* Portfolio Section */}
-      <div className="bg-[#0a0a0a] py-16 px-6 text-center text-white">
+      <div className="bg-accent py-4 px-6 text-center text-primary">
         <h2 className="text-4xl font-bold mb-2">Recent Work</h2>
-        <p className="text-2xl text-yellow-400 mb-6">My Portfolio</p>
+        <p className="text-2xl text-secondary
+        mb-6">My Portfolio</p>
         <p className="text-sm text-gray-400 mb-10">Total Projects: {projects.length}</p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -107,7 +110,7 @@ const projects = [
         <div className="mt-10">
           <a
             href="/projects"
-            className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-6 py-3 rounded-full transition duration-200"
+            className="bg-primary hover:bg-secondary text-black font-semibold px-6 py-3 rounded-full transition duration-200"
           >
             See All Projects
           </a>

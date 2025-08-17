@@ -43,7 +43,7 @@ const places = [
 ];
 
     return (
- <div className="py-16 px-4 bg-gray-50">
+ <div className="py-16 px-4 bg-accent">
       <h2 className="text-3xl text-primary font-bold text-center mb-10">Explore Amazing Places</h2>
 
      <Swiper

@@ -11,20 +11,19 @@ import TouristStories from '../../Componets/TouristStories';
 
 const Home = () => {
     return (
-        <div>
+        <div className='w-full mx-auto'>
 <Banner></Banner>
-<Overview></Overview>
-
+<Overview ></Overview>
   {/* Tourism and Travel Guide Section */}
-<div className="max-w-7xl mx-auto px-4 py-12">
+<div className=" mx-auto py-12 bg-accent">
         <h2 className="text-3xl text-primary font-bold text-center mb-6">
           Tourism and Travel Guide
         </h2>
 
         <Tabs>
           <TabList className="flex justify-center gap-6 border-b mb-6">
-            <Tab className="btn btn-outline btn-success ">Our Packages</Tab>
-            <Tab className="btn btn-outline btn-success">Meet Our Tour Guides</Tab>
+            <Tab className="btn btn-outline btn-primary ">Our Packages</Tab>
+            <Tab className="btn btn-outline btn-secondary">Meet Our Tour Guides</Tab>
           </TabList>
 
           <TabPanel>
@@ -36,8 +35,8 @@ const Home = () => {
         </Tabs>
       </div>
 
-<TouristStories></TouristStories>
-<PlacesSection></PlacesSection>
+<TouristStories className="bg-accent"></TouristStories>
+<PlacesSection className="bg-accent"></PlacesSection>
 <Faq></Faq>
         </div>
     );
