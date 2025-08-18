@@ -5,7 +5,9 @@ const PackageCard = ({ pack }) => {
     const { _id, photo, tourType, title, price } = pack;
     return (
     <div className="card bg-base-100 shadow-xl">
+          
      <figure>
+      
     <img src={photo} alt={title} className="w-full h-48 object-cover" />
     </figure>
     <div className="card-body">

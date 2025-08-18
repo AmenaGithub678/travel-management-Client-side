@@ -28,6 +28,7 @@ import MyAssignedTours from '../Pages/Dashboard/Guide/MyAssignedTours';
 import ManageProfile from '../Pages/Dashboard/Admin/ManageProfile';
 import ManageCandidates from '../Pages/Dashboard/Admin/ManageCandidates';
 import ManageUsers from '../Pages/Dashboard/Admin/ManageUsers';
+import OffersPage from '../Pages/OfferPage/OffersPage';
 
 const router = createBrowserRouter([
   {
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
         {
             path: 'trips',
             Component: Trips,
+        },
+        {
+            path: 'offers',
+            Component: OffersPage,
         },
 
 

@@ -81,7 +81,7 @@ const Navbar = () => {
           >
             {publicRoutes}
 
-            {/* ⭐ Changed: Trips & Offers শুধু লগইন করা অবস্থায় dropdown এ আসবে */}
+            
             {user && (
               <>
                 <li>

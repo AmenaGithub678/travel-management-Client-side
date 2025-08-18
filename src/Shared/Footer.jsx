@@ -2,7 +2,8 @@ import React from "react";
 import { NavLink } from "react-router";
 import { MdAttachEmail } from "react-icons/md";
 import { FcSmartphoneTablet } from "react-icons/fc";
-import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaGithub} from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa6";
 import { FaCcStripe,FaCcPaypal } from "react-icons/fa";
 import { RiVisaFill } from "react-icons/ri";
 
@@ -74,10 +75,30 @@ const Footer = () => {
           <span className="font-semibold text-secondary">@Meem@</span>
         </p>
         <div className="flex gap-4 text-2xl">
-          <FaFacebook className="cursor-pointer text-primary hover:text-secondary transition" />
-          <FaTwitter className="cursor-pointer text-primary hover:text-secondary transition" />
-          <FaInstagram className="cursor-pointer text-primary hover:text-secondary transition" />
-        </div>
+  <a
+    href="https://www.facebook.com/share/16LfmCotgf/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <FaFacebook className="cursor-pointer text-primary hover:text-secondary transition" />
+  </a>
+
+  <a
+    href="https://github.com/AmenaGithub678"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <FaGithub className="cursor-pointer text-primary hover:text-secondary transition" />
+  </a>
+
+  <a
+    href="https://www.linkedin.com/in/amena-akter-0736b52b5/"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <FaLinkedin className="cursor-pointer text-primary hover:text-secondary transition" />
+  </a>
+</div>
       </div>
     </footer>
   );
