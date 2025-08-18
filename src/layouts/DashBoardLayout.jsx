@@ -68,6 +68,9 @@ const { role, roleLoading } = useUserRole();
           {/* Admin Only */}
 {!roleLoading && role === 'admin' && (
   <>
+  <li>
+   <NavLink to="/dashboard/adminOverview">Overview</NavLink>
+   </li>
     <li><NavLink to="/dashboard/admin-profile">Manage Profile</NavLink></li>
     <li><NavLink to="/dashboard/add-packages">Add Packages</NavLink></li>
     <li><NavLink to="/dashboard/ManageCandidates">Manage Candidates</NavLink></li>

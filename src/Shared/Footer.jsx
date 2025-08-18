@@ -18,11 +18,11 @@ const Footer = () => {
           <h2 className="text-xl font-semibold text-secondary lg:text-left">Contact Us</h2>
           <div className="flex items-center gap-2 text-base text-primary hover:text-secondary transition">
             <FcSmartphoneTablet className="text-2xl" />
-            <span>+880 1234-567890</span>
+            <span>+880 1892494080</span>
           </div>
           <div className="flex items-center gap-2 text-base text-primary hover:text-secondary transition">
             <MdAttachEmail className="text-2xl" />
-            <span>support@tourmate.com</span>
+            <span>akteramena102@gmail.com</span>
           </div>
         </div>
 

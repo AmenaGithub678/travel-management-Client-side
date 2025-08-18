@@ -30,6 +30,8 @@ import ManageCandidates from '../Pages/Dashboard/Admin/ManageCandidates';
 import ManageUsers from '../Pages/Dashboard/Admin/ManageUsers';
 import OffersPage from '../Pages/OfferPage/OffersPage';
 
+import AdminOverView from '../Pages/Dashboard/Admin/AdminOverView';
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -134,6 +136,10 @@ const router = createBrowserRouter([
 
 
 // ADMIN
+{
+  path: 'adminOverview',
+  element: <AdminOverView></AdminOverView>
+},
 {
 path: 'admin-profile',
 element:<ManageProfile></ManageProfile>
