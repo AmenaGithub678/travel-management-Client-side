@@ -37,8 +37,8 @@ const axiosSecure = useAxiosSecure();
 
 
     return (
-    <div className="min-h-screen p-6 bg-base-200">
-      <h2 className="text-3xl font-bold text-center mb-6">Community Stories</h2>
+    <div className="min-h-screen p-6 bg-accent">
+      <h2 className="text-primary text-3xl font-bold text-center mb-6">Community Stories</h2>
       <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {stories.map(story => (
           <div key={story._id} className="card bg-white shadow-lg">
@@ -46,12 +46,13 @@ const axiosSecure = useAxiosSecure();
               <img
                 src={story.images?.[0] || 'https://via.placeholder.com/400x300?text=No+Image'}
                 alt={story.title}
-                className="object-cover w-full h-full"
+                className="object-cover w-full h-full
+                "
               />
             </figure>
             <div className="card-body">
-              <h3 className="card-title">{story.title}</h3>
-              <p className="text-sm text-gray-700">{story.description?.slice(0, 100)}...</p>
+              <h3 className="card-title text-primary">{story.title}</h3>
+              <p className="text-sm text-secondary">{story.description?.slice(0, 100)}...</p>
               <div className="mt-4 flex gap-3 items-center">
                 <FacebookShareButton url={window.location.href} quote={story.title}>
                   <FacebookIcon size={32} round />

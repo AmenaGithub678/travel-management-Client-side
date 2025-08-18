@@ -44,7 +44,7 @@ const places = [
 
     return (
  <div className="py-16 px-4 bg-accent">
-      <h2 className="text-3xl text-primary font-bold text-center mb-10">Explore Amazing Places</h2>
+ <h2 className="text-3xl text-primary font-bold text-center mb-10">Explore Amazing Places</h2>
 
      <Swiper
   effect={'coverflow'}
@@ -92,8 +92,8 @@ const places = [
         </Tippy>
       </div>
       <div className="p-4">
-        <h3 className="text-xl font-semibold">{place.title}</h3>
-        <p className="text-sm text-gray-600 mt-1">{place.description}</p>
+        <h3 className="text-secondary text-xl font-semibold">{place.title}</h3>
+        <p className="text-sm text-primary mt-1 mb-2">{place.description}</p>
       </div>
     </SwiperSlide>
   ))}

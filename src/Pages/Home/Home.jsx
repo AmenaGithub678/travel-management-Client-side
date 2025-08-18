@@ -7,6 +7,8 @@ import PackagesTab from '../../Componets/Tabs/PackagesTab';
 import GuidesTab from '../../Componets/Tabs/GuidesTab';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import TouristStories from '../../Componets/TouristStories';
+import HowItWorks from '../../Componets/HowItWorks';
+import WhyChooseUs from '../../Componets/WhyChooseUs';
 
 
 const Home = () => {
@@ -14,6 +16,7 @@ const Home = () => {
         <div className='w-full mx-auto'>
 <Banner></Banner>
 <Overview ></Overview>
+<HowItWorks></HowItWorks>
   {/* Tourism and Travel Guide Section */}
 <div className=" mx-auto py-12 bg-accent">
         <h2 className="text-3xl text-primary font-bold text-center mb-6">
@@ -37,6 +40,7 @@ const Home = () => {
 
 <TouristStories className="bg-accent"></TouristStories>
 <PlacesSection className="bg-accent"></PlacesSection>
+<WhyChooseUs></WhyChooseUs>
 <Faq></Faq>
         </div>
     );

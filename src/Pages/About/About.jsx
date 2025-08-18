@@ -39,7 +39,7 @@ const projects = [
             />
           </p>
 
-          <p className="text-gray-300 mb-6 max-w-lg">
+          <p className="text-black mb-6 max-w-lg">
             I specialize in building dynamic and responsive Mern-stack web
             applications using MongoDB, Express, React, and Node.js. I'm
             passionate about clean code, intuitive UI/UX, and continuous
@@ -81,7 +81,7 @@ const projects = [
         <h2 className="text-4xl font-bold mb-2">Recent Work</h2>
         <p className="text-2xl text-secondary
         mb-6">My Portfolio</p>
-        <p className="text-sm text-gray-400 mb-10">Total Projects: {projects.length}</p>
+        <p className="text-sm text-black mb-10">Total Projects: {projects.length}</p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {projects.map((project, index) => (
