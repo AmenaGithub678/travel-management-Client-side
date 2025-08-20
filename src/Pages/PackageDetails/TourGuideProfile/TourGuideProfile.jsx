@@ -26,9 +26,9 @@ const { id } = useParams();
   if (guideLoading) return <p className="text-center py-10">Loading guide info...</p>;
 
   return (
-    <section className="max-w-5xl mx-auto px-4 py-10">
+    <section className="max-w-7xl bg-accent mx-auto px-4 py-10">
       {/* Guide Info */}
-      <div className="grid md:grid-cols-2 gap-8 mb-10 bg-white shadow rounded-xl p-6">
+      <div className="grid md:grid-cols-2 gap-8 mb-10  shadow rounded-xl p-6">
         <div>
           <img
             src={guide.photo}
@@ -37,10 +37,10 @@ const { id } = useParams();
           />
         </div>
         <div className="space-y-3">
-          <h2 className="text-3xl font-bold">{guide.name}</h2>
-          <p className="text-gray-600">📧 Email: {guide.email}</p>
-          <p className="text-gray-600">📞 Phone: {guide.phone}</p>
-          <p className="text-gray-600">🏠 Address: {guide.address}</p>
+          <h2 className="text-3xl font-bold italic text-primary">{guide.name}</h2>
+          <p className="text-secondary">📧 Email: {guide.email}</p>
+          <p className="text-secondary">📞 Phone: {guide.phone}</p>
+          <p className="text-secondary">🏠 Address: {guide.address}</p>
         </div>
       </div>
 

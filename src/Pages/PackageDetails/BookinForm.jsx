@@ -79,12 +79,11 @@ const BookinForm = ({ selectedPackage }) => {
           </div>
         </>
       )}
-
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="space-y-4 border p-6 rounded-xl shadow bg-white max-w-xl mx-auto"
+        className="space-y-4 border p-6 rounded-xl shadow bg-info max-w-xl mx-auto"
       >
-        <h2 className="text-xl font-bold mb-4">Book This Tour</h2>
+        <h2 className="text-primary text-xl font-bold mb-4">Book This Tour</h2>
 
         <div>
           <label>Package Name</label>

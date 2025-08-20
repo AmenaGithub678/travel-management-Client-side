@@ -1,11 +1,32 @@
 import React from 'react';
-import { NavLink, Outlet } from 'react-router';
+import { Navigate, NavLink, Outlet } from 'react-router';
 import TourLogo from '../Logo/TourLogo';
 import useUserRole from '../hooks/UseUserRole/useUserRole';
+import { useLocation } from 'react-router';
 
 const DashBoardLayout = () => {
 const { role, roleLoading } = useUserRole();
   // console.log(role);
+const location = useLocation();
+
+
+
+if (roleLoading) {
+  return <span className="loading loading-spinner loading-xl"></span>;
+}
+
+// Redirect logic for default overview (only if user is exactly at /dashboard)
+if (location.pathname === "/dashboard") {
+  if (role === "admin") {
+    return <Navigate to="/dashboard/adminOverview" replace />;
+  }
+  if (role === "user") {
+    return <Navigate to="/dashboard/userOverview" replace />;
+  }
+  // if (role === "tour-guide") {
+  //   return <Navigate to="/dashboard/assigned-tours" replace />;
+  // }
+}
     return (
        <div className="drawer lg:drawer-open">
      <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -47,9 +68,10 @@ const { role, roleLoading } = useUserRole();
           <li><NavLink to="/dashboard/add-stories">Add Stories</NavLink></li>
           <li><NavLink to="/dashboard/manage-stories">Manage Stories</NavLink></li>
           <li><NavLink to="/dashboard/join-guide">Join as Guide</NavLink></li>
+          
 
 {/* Tourist Only */}
-{role === 'tour-guide' && (
+{role === 'user' && (
   <>
   <li><NavLink to="/dashboard/my-bookings">My Bookings</NavLink></li>
   <li><NavLink to="/dashboard/payment-history">Payment History</NavLink></li>
@@ -65,16 +87,14 @@ const { role, roleLoading } = useUserRole();
             </>
           )}
 
-          {/* Admin Only */}
+{/* Admin Only */}
 {!roleLoading && role === 'admin' && (
   <>
-  <li>
-   <NavLink to="/dashboard/adminOverview">Overview</NavLink>
-   </li>
-    <li><NavLink to="/dashboard/admin-profile">Manage Profile</NavLink></li>
-    <li><NavLink to="/dashboard/add-packages">Add Packages</NavLink></li>
-    <li><NavLink to="/dashboard/ManageCandidates">Manage Candidates</NavLink></li>
-    <li><NavLink to="/dashboard/manage-users">Manage Users</NavLink></li>
+
+<li><NavLink to="/dashboard/admin-profile">Profile</NavLink></li>
+<li><NavLink to="/dashboard/add-packages">Add Packages</NavLink></li>
+<li><NavLink to="/dashboard/ManageCandidates">Manage Candidates</NavLink></li>
+<li><NavLink to="/dashboard/manage-users">Manage Users</NavLink></li>
             </>
           )}
         </ul>

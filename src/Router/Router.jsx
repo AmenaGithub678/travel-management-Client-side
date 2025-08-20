@@ -31,6 +31,8 @@ import ManageUsers from '../Pages/Dashboard/Admin/ManageUsers';
 import OffersPage from '../Pages/OfferPage/OffersPage';
 
 import AdminOverView from '../Pages/Dashboard/Admin/AdminOverView';
+import AdminRoute from '../Routes/AdminRoute';
+import UserOverview from '../Pages/Dashboard/Tourist/UserOverview';
 
 const router = createBrowserRouter([
   {
@@ -93,6 +95,10 @@ const router = createBrowserRouter([
       <DashBoardLayout></DashBoardLayout>
     </PrivateRoute>,
     children: [
+      {
+path: 'userOverview',
+element: <UserOverview></UserOverview>
+      },
       // Tourist
       { 
         path: 'my-bookings', 
@@ -136,26 +142,46 @@ const router = createBrowserRouter([
 
 
 // ADMIN
+
 {
   path: 'adminOverview',
-  element: <AdminOverView></AdminOverView>
+  element: <AdminRoute>
+<AdminOverView></AdminOverView>
+  </AdminRoute> 
 },
+ {
+      path: 'admin-profile',
+      element: (
+        <AdminRoute>
+          <ManageProfile />
+        </AdminRoute>
+      ),
+    },
+
+
+ {
+      path: 'manage-users',
+      element: (
+        <AdminRoute>
+          <ManageUsers />
+        </AdminRoute>
+      ),
+    },
+
 {
-path: 'admin-profile',
-element:<ManageProfile></ManageProfile>
-},
-{
-  path: 'manage-users',
-  element:<ManageUsers></ManageUsers>
-},
-{
-  path: 'ManageCandidates',
-  element: <ManageCandidates></ManageCandidates>
-},
-{
-  path: 'add-packages',
-  element: <AddPackage></AddPackage>
-},
+      path: 'ManageCandidates',
+      element: (
+        <AdminRoute>
+          <ManageCandidates />
+        </AdminRoute>
+      ),
+    },
+ {
+      path: 'add-packages',
+      element: (
+        <AdminRoute>
+          <AddPackage />
+        </AdminRoute>)}
 
 
     ]

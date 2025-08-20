@@ -3,7 +3,7 @@ import React from 'react';
 import loginLottie from '../../assets/lotties/login.json'
 import { useForm } from 'react-hook-form';
 import useAuth from '../../hooks/useAuth';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { auth } from '../../firebase/firebase.init';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import SocialLogin from '../../Shared/SocialLogin';
@@ -45,8 +45,7 @@ const handleResetPassward = () => {
       if (!email) {
        alert('successfully reset your password')
         return;
-      }
-    
+      }  
       sendPasswordResetEmail(auth, email)
         .then(() => {
           alert('resent email send!')
@@ -57,7 +56,11 @@ const handleResetPassward = () => {
     };       
 
 return (
-<div className="hero bg-base-200 min-h-screen">
+<div className="hero bg-info min-h-screen">
+ <div className="absolute top-10 lg:top-10 left-20 lg:left-40">
+         <Link to="/" className="btn btn-sm btn-outline btn-primary">← Back to Home</Link>
+       </div>
+
 <div className="hero-content flex-col lg:flex-row-reverse">
 
 <div className="text-center lg:text-left w-72 lg:w-96">
@@ -66,19 +69,19 @@ return (
         </Lottie>           
 </div>
 
-<div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+<div className="card bg-accent w-full max-w-sm shrink-0 shadow-2xl">
       <form 
         onSubmit={handleSubmit(onSubmit)}
       
       className="card-body">
-        <h1 className="mt-4 text-5xl font-bold">Login now!</h1>
+        <h1 className="mt-4 text-5xl font-bold text-primary">Login now!</h1>
         <fieldset className="fieldset">
-          <label className="label">Email</label>
+          <label className="label ">Email</label>
           <input 
           type="email"
           {...register('email')}
           name="email" className="input" placeholder="Email" />
-          <label className="label">Password</label>
+          <label className="label ">Password</label>
           <input type="password"
 
     {...register('password', 
@@ -98,8 +101,12 @@ return (
 
           <div><button onClick={handleResetPassward}
            className="link link-hover">Forgot password?</button></div>
-          <button className="btn btn-neutral mt-2">Login</button>
+          <button className="btn btn-primary mt-2">Login</button>
         </fieldset>
+         <p className="text-center pt-2 font-normal">
+           Don't have any account?{' '}
+            <Link to="/register" className="text-blue-500 underline">Register Now!</Link>
+                      </p>
         <SocialLogin></SocialLogin>
       </form >
     </div>

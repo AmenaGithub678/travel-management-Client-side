@@ -4,8 +4,8 @@ const AboutTour = ({ description }) => {
    if (!description) return null;
     return (
     <section>
-      <h2 className="text-2xl font-semibold mb-2">About This Tour</h2>
-      <p className="text-gray-700">
+      <h2 className="text-2xl font-semibold mb-2 text-secondary">About This Tour</h2>
+      <p className="text-primary">
         {description}
       </p>
     </section>

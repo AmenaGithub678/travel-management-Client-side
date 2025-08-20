@@ -20,7 +20,7 @@ const TourGallery = ({ images }) => {
     return (
   
   <section className="my-8 px-4">
-      <h2 className="text-3xl font-bold text-center mb-6">Tour Gallery</h2>
+      <h2 className="text-3xl font-bold text-center mb-6 text-primary">Tour Gallery</h2>
       <LightGallery plugins={[lgZoom, lgThumbnail]} selector=".gallery-item">
         <div className="space-y-6">
           {chunkedImages.map((group, groupIndex) => (

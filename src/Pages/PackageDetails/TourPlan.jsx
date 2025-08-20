@@ -6,12 +6,12 @@ const TourPlan = ({ tourPlan }) => {
       <section className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
       <div className="max-w-xl mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
         <div>
-          <p className="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
+          <p className="inline-block px-3 py-px mb-4 text-xl font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400 ">
             Your Journey, Our Responsibility
           </p>
         </div>
         <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold leading-none tracking-tight text-gray-900 sm:text-4xl md:mx-auto">
-          <span className="relative inline-block">
+          <span className="relative inline-block text-secondary">
             <svg
               viewBox="0 0 52 24"
               fill="currentColor"
@@ -34,11 +34,12 @@ const TourPlan = ({ tourPlan }) => {
                 height="24"
               />
             </svg>
-            <span className="relative">Discover</span>
+            <span className="relative text-primary italic">Discover</span>
           </span>{' '}
           Your Day-by-Day Tour Plan
         </h2>
-        <p className="text-base text-gray-700 md:text-lg">
+        <p className="text-base text-secondary
+        md:text-lg">
           Start your journey through lush green hills, winding trails, and serene landscapes that will leave you breathless. A perfect start for nature lovers.
         </p>
       </div>
@@ -51,7 +52,7 @@ const TourPlan = ({ tourPlan }) => {
           >
             <div className="mr-2">
               <svg
-                className="w-6 h-6 text-deep-purple-accent-400 sm:w-8 sm:h-8"
+                className="w-6 h-6 text-primary  text-deep-purple-accent-400 sm:w-8 sm:h-8"
                 stroke="currentColor"
                 viewBox="0 0 52 52"
               >
@@ -65,7 +66,7 @@ const TourPlan = ({ tourPlan }) => {
               </svg>
             </div>
             <div>
-              <h3 className="text-gray-900 font-semibold">
+              <h3 className="text-primary font-semibold">
                 Day {day}: {title}
               </h3>
               <p className="text-gray-800">{details}</p>

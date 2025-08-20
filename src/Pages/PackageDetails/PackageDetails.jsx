@@ -34,7 +34,7 @@ const PackageDetails = () => {
 
 
     return (
-       <div className="max-w-6xl mx-auto px-4 py-8 space-y-12">
+       <div className="max-w-7xl mx-auto px-4 py-8 space-y-12 bg-accent">
       {/* Tour Image Gallery */}
       <TourGallery images={pack.gallery} />
 
@@ -49,7 +49,7 @@ const PackageDetails = () => {
         <p className="text-center">Loading tour guides...</p>
       ) : (
         <div className="mt-10">
-          <h3 className="text-2xl font-bold mb-4">Meet Tour Guides</h3>
+          <h3 className="text-primary text-2xl font-bold mb-4">Meet Tour Guides</h3>
           <div className="grid md:grid-cols-3 gap-4">
             {allGuides.map((guide) => (
               <div
