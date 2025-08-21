@@ -15,6 +15,7 @@ import {
 } from "recharts";
 import { FcComboChart } from "react-icons/fc";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { HiOutlineBell } from "react-icons/hi";
 
 const COLORS = ["#4F46E5", "#10B981", "#F59E0B", "#EF4444", "#3B82F6"];
 
@@ -53,6 +54,14 @@ const AdminOverview = () => {
     { month: "Jun", payments: 1100 },
     { month: "Jul", payments: 1800 },
     { month: "Aug", payments: 1400 },
+  ];
+
+   const notifications = [
+    { id: 1, title: "Tour Reminder", message: "Your Cox's Bazar Sea Beach tour starts on 12 Sep 2025 at 09:30 AM.", time: "2 hours ago" },
+    { id: 2, title: "Booking Rescheduled", message: "Your Sundarbans trip has been rescheduled to 20 Sep 2025.", time: "1 day ago" },
+    { id: 3, title: "Booking Confirmation", message: "Your Srimangal Tea Gardens tour has been confirmed for 25 Sep 2025.", time: "2 days ago" },
+    { id: 4, title: "Special Offer", message: "Book your next Bandarban trip by Oct 2025 to avail discounts!", time: "3 days ago" },
+    { id: 5, title: "New Message", message: "Tourist John Doe left you a message about his upcoming trip.", time: "5 days ago" },
   ];
 
   return (
@@ -155,6 +164,21 @@ const AdminOverview = () => {
           </BarChart>
         </ResponsiveContainer>
       </div>
+{/* Notification */}
+<div className="mt-4">
+        <h2 className="text-xl font-semibold mb-4 flex items-center gap-2 text-primary"><HiOutlineBell className="h-5 w-5 " /> Notifications</h2>
+        <div className="space-y-4">
+          {notifications.map((note) => (
+            <div key={note.id} className="card shadow-sm border-l-16 border-r-16 border-b-10
+             border-primary p-12">
+              <h3 className="font-semibold text-primary">{note.title}</h3>
+              <p className="text-secondary">{note.message}</p>
+              <p className="text-sm text-info  mt-1">{note.time}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
     </div>
   );
 };

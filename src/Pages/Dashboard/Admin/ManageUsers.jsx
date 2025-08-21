@@ -43,16 +43,16 @@ const axiosSecure = useAxiosSecure();
 
     return (
 <div className="p-6">
-      {/* 🔍 Filter Dropdown */}
+      {/* Filter Dropdown */}
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-2xl font-bold">👥 Manage Users</h2>
+        <h2 className="text-2xl font-bold text-primary">👥 Manage Users</h2>
         <select
           value={roleFilter}
           onChange={(e) => {
             setPage(1);
             setRoleFilter(e.target.value);
           }}
-          className="select select-bordered"
+          className="select select-bordered text-primary"
         >
           <option value="all">All</option>
           <option value="tour-guide">Tour Guide</option>
@@ -92,12 +92,13 @@ const axiosSecure = useAxiosSecure();
                   {user.role !== 'tour-guide' ? (
                     <button
                       onClick={() => handlePromote(user.email)}
-                      className="btn btn-xs btn-success"
+                      className="btn btn-xs btn-primary"
                     >
                       Promote to Guide
                     </button>
                   ) : (
-                    <span className="text-green-600 font-medium">Guide</span>
+                    <span className="text-primary
+                    font-medium">Guide</span>
                   )}
                 </td>
               </tr>

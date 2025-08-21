@@ -33,6 +33,7 @@ import OffersPage from '../Pages/OfferPage/OffersPage';
 import AdminOverView from '../Pages/Dashboard/Admin/AdminOverView';
 import AdminRoute from '../Routes/AdminRoute';
 import UserOverview from '../Pages/Dashboard/Tourist/UserOverview';
+import GuideOverview from '../Pages/Dashboard/Guide/GuideOverview';
 
 const router = createBrowserRouter([
   {
@@ -138,6 +139,10 @@ element: <UserOverview></UserOverview>
 // GUIDE
  { path: 'assigned-tours',
    element: <MyAssignedTours></MyAssignedTours>
+  },
+  {
+    path: 'guide-overview',
+    element: <GuideOverview></GuideOverview>
   },
 
 

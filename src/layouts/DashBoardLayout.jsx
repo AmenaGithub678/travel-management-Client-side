@@ -23,9 +23,9 @@ if (location.pathname === "/dashboard") {
   if (role === "user") {
     return <Navigate to="/dashboard/userOverview" replace />;
   }
-  // if (role === "tour-guide") {
-  //   return <Navigate to="/dashboard/assigned-tours" replace />;
-  // }
+   if (role === "tour-guide") {
+     return <Navigate to="/dashboard/guide-overview" replace />;
+   }
 }
     return (
        <div className="drawer lg:drawer-open">
